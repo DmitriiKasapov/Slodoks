@@ -25,14 +25,18 @@ const SLODOKS_VITE_ENTRY = 'src/js/main.js';
 function slodoks_vite_dev_server(): string {
 	static $url = null;
 
-	if ( null === $url ) {
-		if ( ! in_array( wp_get_environment_type(), [ 'local', 'development' ], true ) ) {
-			return $url = '';
-		}
-
-		$hot = get_template_directory() . '/.vite-hot';
-		$url = is_readable( $hot ) ? trim( (string) file_get_contents( $hot ) ) : '';
+	if ( null !== $url ) {
+		return $url;
 	}
+
+	if ( ! in_array( wp_get_environment_type(), [ 'local', 'development' ], true ) ) {
+		$url = '';
+
+		return $url;
+	}
+
+	$hot = get_template_directory() . '/.vite-hot';
+	$url = is_readable( $hot ) ? trim( (string) file_get_contents( $hot ) ) : '';
 
 	return $url;
 }
@@ -101,3 +105,25 @@ function slodoks_module_script_tag( string $tag, string $handle ): string {
 	return str_replace( '<script ', '<script type="module" ', $tag );
 }
 add_filter( 'script_loader_tag', 'slodoks_module_script_tag', 10, 2 );
+
+/**
+ * Warn in wp-admin when the theme has no assets to load.
+ *
+ * Without this the site simply renders unstyled, which is easy to mistake for
+ * a CSS bug. Local and development environments only.
+ */
+function slodoks_missing_build_notice(): void {
+	if ( ! in_array( wp_get_environment_type(), [ 'local', 'development' ], true ) ) {
+		return;
+	}
+
+	if ( slodoks_vite_dev_server() || slodoks_vite_manifest() ) {
+		return;
+	}
+
+	printf(
+		'<div class="notice notice-warning"><p>%s</p></div>',
+		esc_html__( 'Theme assets are missing. Run "npm run build" or "npm run dev" in the theme folder.', 'slodoks' )
+	);
+}
+add_action( 'admin_notices', 'slodoks_missing_build_notice' );

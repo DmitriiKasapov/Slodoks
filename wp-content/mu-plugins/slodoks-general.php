@@ -24,11 +24,11 @@ add_action(
 	static function (): void {
 		$widgets = [
 			// Core widgets: id => screen context.
-			'dashboard_activity'        => 'normal',
-			'dashboard_right_now'       => 'normal',
-			'dashboard_site_health'     => 'normal',
-			'dashboard_primary'         => 'side',
-			'dashboard_quick_press'     => 'side',
+			'dashboard_activity'         => 'normal',
+			'dashboard_right_now'        => 'normal',
+			'dashboard_site_health'      => 'normal',
+			'dashboard_primary'          => 'side',
+			'dashboard_quick_press'      => 'side',
 			// Common third-party widgets.
 			'rank_math_dashboard_widget' => 'normal',
 			'wpseo-dashboard-overview'   => 'normal',

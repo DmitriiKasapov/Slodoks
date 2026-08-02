@@ -1,18 +1,21 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { writeFileSync, rmSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { basename, resolve } from 'node:path';
 
 // Kept outside dist/ on purpose: `vite build` empties that folder and would
 // silently drop the marker while the dev server is still running.
 const HOT_FILE = resolve(import.meta.dirname, '.vite-hot');
+
+// Derived from the folder name so renaming the theme needs no config edit.
+const THEME_SLUG = basename(import.meta.dirname);
 
 /**
  * Writes .vite-hot while the dev server runs, so inc/enqueue.php knows to load
  * assets from Vite instead of dist/. Removed when the server stops.
  */
 const hotFile = () => ({
-	name: 'slodoks-hot-file',
+	name: 'theme-hot-file',
 	apply: 'serve',
 	configureServer(server) {
 		server.httpServer?.once('listening', () => {
@@ -31,7 +34,7 @@ export default defineConfig(({ command }) => ({
 	plugins: [tailwindcss(), hotFile()],
 	// On build, asset URLs inside CSS must resolve from the site root.
 	// The dev server serves from its own root, so no prefix there.
-	base: command === 'build' ? '/wp-content/themes/slodoks/dist/' : '/',
+	base: command === 'build' ? `/wp-content/themes/${THEME_SLUG}/dist/` : '/',
 	build: {
 		outDir: 'dist',
 		emptyOutDir: true,
@@ -42,9 +45,11 @@ export default defineConfig(({ command }) => ({
 	},
 	server: {
 		port: 5173,
-		strictPort: true,
+		// Fall back to the next free port instead of failing: several projects
+		// may run at once, and .vite-hot always records the real port.
+		strictPort: false,
+		// The site is served by Docker on another port, so the dev server is
+		// cross-origin for the browser.
 		cors: true,
-		// The site runs in Docker on 8002, Vite on the host.
-		origin: 'http://localhost:5173',
 	},
 }));

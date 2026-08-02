@@ -11,6 +11,13 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
     volumes:
       - slodoks_db_data:/var/lib/mysql
+    # WordPress must not start before MySQL is ready to accept connections.
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
 
   slodoks_wp:
     image: wordpress:latest
@@ -38,8 +45,12 @@ services:
         define( 'SCRIPT_DEBUG', true );
     volumes:
       - ./wp-content:/var/www/html/wp-content
+      # Lives in the container otherwise, so pretty permalinks would break
+      # every time the container is recreated.
+      - ./.htaccess:/var/www/html/.htaccess
     depends_on:
-      - slodoks_db
+      slodoks_db:
+        condition: service_healthy
 
 volumes:
   slodoks_db_data:
