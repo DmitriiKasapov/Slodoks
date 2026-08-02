@@ -3,7 +3,7 @@
  * Theme options panel (Redux Framework).
  * For full documentation, please visit: https://devs.redux.io/
  *
- * @package Elementor_Theme
+ * @package SloDoks_Theme
  */
 
 // phpcs:disable
@@ -14,7 +14,7 @@ if ( ! class_exists( 'Redux' ) ) {
 }
 
 // This is your option name where all the Redux data is stored.
-$opt_name = 'elementor_options';
+$opt_name = 'slodoks_options';
 
 // Disable demo mode notice.
 Redux::disable_demo();
@@ -279,7 +279,7 @@ Redux::set_help_sidebar( $opt_name, $content );
 Redux::set_section(
 	$opt_name,
 	array(
-		'title'            => esc_html__( 'Global Options', 'elementor' ),
+		'title'            => esc_html__( 'Global Options', 'slodoks' ),
 		'id'               => 'global',
 		'customizer_width' => '400px',
 		'icon'             => 'el el-home',
@@ -290,7 +290,7 @@ Redux::set_section(
 Redux::set_section(
 	$opt_name,
 	array(
-		'title'      => esc_html__( 'Footer Data', 'elementor' ),
+		'title'      => esc_html__( 'Footer Data', 'slodoks' ),
 		'id'         => 'global-footer-data',
 		'subsection' => true,
 		'icon'       => 'el el-website',
@@ -298,46 +298,46 @@ Redux::set_section(
 			array(
 				'id'      => 'footer_title_1',
 				'type'    => 'text',
-				'title'   => esc_html__( 'Title 1', 'elementor' ),
+				'title'   => esc_html__( 'Title 1', 'slodoks' ),
 				'default' => '',
 			),
 			array(
 				'id'      => 'footer_title_2',
 				'type'    => 'text',
-				'title'   => esc_html__( 'Title 2', 'elementor' ),
+				'title'   => esc_html__( 'Title 2', 'slodoks' ),
 				'default' => '',
 			),
 			array(
 				'id'      => 'footer_title_3',
 				'type'    => 'text',
-				'title'   => esc_html__( 'Title 3', 'elementor' ),
+				'title'   => esc_html__( 'Title 3', 'slodoks' ),
 				'default' => '',
 			),
 			array(
 				'id'      => 'footer_text_1',
 				'type'    => 'textarea',
-				'title'   => esc_html__( 'Text 1', 'elementor' ),
+				'title'   => esc_html__( 'Text 1', 'slodoks' ),
 				'rows'    => 4,
 				'default' => '',
 			),
 			array(
 				'id'      => 'footer_text_2',
 				'type'    => 'textarea',
-				'title'   => esc_html__( 'Text 2', 'elementor' ),
+				'title'   => esc_html__( 'Text 2', 'slodoks' ),
 				'rows'    => 4,
 				'default' => '',
 			),
 			array(
 				'id'      => 'footer_form_title',
 				'type'    => 'text',
-				'title'   => esc_html__( 'Form title', 'elementor' ),
+				'title'   => esc_html__( 'Form title', 'slodoks' ),
 				'default' => '',
 			),
 			array(
 				'id'       => 'footer_form_shortcode',
 				'type'     => 'text',
-				'title'    => esc_html__( 'Form shortcode', 'elementor' ),
-				'subtitle' => esc_html__( 'For example: [contact-form-7 id="123"]', 'elementor' ),
+				'title'    => esc_html__( 'Form shortcode', 'slodoks' ),
+				'subtitle' => esc_html__( 'For example: [contact-form-7 id="123"]', 'slodoks' ),
 				'default'  => '',
 			),
 		),

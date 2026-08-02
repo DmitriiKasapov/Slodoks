@@ -2,10 +2,10 @@
 /**
  * Footer template.
  *
- * @package Elementor_Theme
+ * @package SloDoks_Theme
  */
 
-global $elementor_options;
+global $slodoks_options;
 ?>
 <footer class="site-footer">
       <div class="container">
@@ -13,16 +13,16 @@ global $elementor_options;
           <div class="col-md-6">
             <div class="row">
               <div class="col-md-8">
-				<?php if ( ! empty( $elementor_options['footer_title_1'] ) ) : ?>
-                <h2 class="footer-heading mb-4"><?php echo esc_html( $elementor_options['footer_title_1'] ); ?></h2>
+				<?php if ( ! empty( $slodoks_options['footer_title_1'] ) ) : ?>
+                <h2 class="footer-heading mb-4"><?php echo esc_html( $slodoks_options['footer_title_1'] ); ?></h2>
 				<?php endif; ?>
-				<?php if ( ! empty( $elementor_options['footer_text_1'] ) ) : ?>
-                <?php echo wpautop( esc_html( $elementor_options['footer_text_1'] ) ); ?>
+				<?php if ( ! empty( $slodoks_options['footer_text_1'] ) ) : ?>
+                <?php echo wpautop( esc_html( $slodoks_options['footer_text_1'] ) ); ?>
 				<?php endif; ?>
               </div>
               <div class="col-md-4 ml-auto">
-				<?php if ( ! empty( $elementor_options['footer_title_2'] ) ) : ?>
-                <h2 class="footer-heading mb-4"><?php echo esc_html( $elementor_options['footer_title_2'] ); ?></h2>
+				<?php if ( ! empty( $slodoks_options['footer_title_2'] ) ) : ?>
+                <h2 class="footer-heading mb-4"><?php echo esc_html( $slodoks_options['footer_title_2'] ); ?></h2>
 				<?php endif; ?>
 				<?php
 					wp_nav_menu(
@@ -43,18 +43,18 @@ global $elementor_options;
 
             <div class="mb-5">
               <div class="mb-5">
-				<?php if ( ! empty( $elementor_options['footer_title_3'] ) ) : ?>
-                <h2 class="footer-heading mb-4"><?php echo esc_html( $elementor_options['footer_title_3'] ); ?></h2>
+				<?php if ( ! empty( $slodoks_options['footer_title_3'] ) ) : ?>
+                <h2 class="footer-heading mb-4"><?php echo esc_html( $slodoks_options['footer_title_3'] ); ?></h2>
 				<?php endif; ?>
-				<?php if ( ! empty( $elementor_options['footer_text_2'] ) ) : ?>
-                <?php echo wpautop( esc_html( $elementor_options['footer_text_2'] ) ); ?>
+				<?php if ( ! empty( $slodoks_options['footer_text_2'] ) ) : ?>
+                <?php echo wpautop( esc_html( $slodoks_options['footer_text_2'] ) ); ?>
 				<?php endif; ?>
               </div>
-			  <?php if ( ! empty( $elementor_options['footer_form_title'] ) ) : ?>
-              <h2 class="footer-heading mb-4"><?php echo esc_html( $elementor_options['footer_form_title'] ); ?></h2>
+			  <?php if ( ! empty( $slodoks_options['footer_form_title'] ) ) : ?>
+              <h2 class="footer-heading mb-4"><?php echo esc_html( $slodoks_options['footer_form_title'] ); ?></h2>
 			  <?php endif; ?>
-			  <?php if ( ! empty( $elementor_options['footer_form_shortcode'] ) ) : ?>
-              <div class="mb-3"><?php echo do_shortcode( $elementor_options['footer_form_shortcode'] ); ?></div>
+			  <?php if ( ! empty( $slodoks_options['footer_form_shortcode'] ) ) : ?>
+              <div class="mb-3"><?php echo do_shortcode( $slodoks_options['footer_form_shortcode'] ); ?></div>
 			  <?php endif; ?>
 
 

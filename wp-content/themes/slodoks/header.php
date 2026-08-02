@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package Elementor
+ * @package SloDoks
  */
 
 ?>
@@ -51,7 +51,7 @@
 			  	<?php
 
 				
-				add_filter( 'nav_menu_link_attributes', 'elementor_add_link_atts');
+				add_filter( 'nav_menu_link_attributes', 'slodoks_nav_link_atts');
 
 					wp_nav_menu(
 						array(
@@ -62,7 +62,7 @@
 						)
 					);
 
-					remove_filter( 'nav_menu_link_attributes', 'elementor_add_link_atts');
+					remove_filter( 'nav_menu_link_attributes', 'slodoks_nav_link_atts');
 				?>
                 
               </nav>
