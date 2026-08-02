@@ -1,0 +1,21 @@
+/* Accessibility helpers used by the templates. */
+
+/* Visually hidden, still readable by screen readers. */
+@utility screen-reader-text {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* The skip link is hidden until reached with the keyboard. */
+.skip-link:focus-visible {
+	@apply fixed top-2 left-2 z-[100000] m-0 h-auto w-auto px-5 py-3 bg-white text-black;
+
+	clip-path: none;
+}

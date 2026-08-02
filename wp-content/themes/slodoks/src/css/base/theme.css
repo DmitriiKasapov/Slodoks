@@ -1,0 +1,13 @@
+@theme {
+	/*
+	 * SloDoks theme configuration.
+	 * Tailwind v4 is CSS-first: values declared here become utilities,
+	 * e.g. --color-brand-500 gives bg-brand-500 / text-brand-500.
+	 *
+	 * Fill in the palette and type scale from the Consal design.
+	 */
+
+	/* Fonts */
+	--font-sans: ui-sans-serif, system-ui, sans-serif;
+	--font-heading: var(--font-sans);
+}

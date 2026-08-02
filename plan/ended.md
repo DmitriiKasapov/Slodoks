@@ -37,6 +37,8 @@
   (4) type="module" вместе со стратегией defer — избыточно, модули отложены по умолчанию.
   Защита от устаревшего маркера: тема доверяет .vite-hot только при WP_ENVIRONMENT_TYPE local/development, в docker-compose добавлена переменная. Проверено реально: сканирование Tailwind из PHP-шаблонов (включая брейкпойнты), оба режима сборки, переключение между ними, php -l, все шаблоны, debug.log пуст — выполнено
 
+[2026-08-02] [стили] CSS разбит на структуру по образцу проекта D:\Projects\SloDoks: main.css только с @import, base/ (theme.css с токенами @theme, root.css с обычными переменными, base.css со сбросом элементов и классами выравнивания блочного редактора, typography.css), utilities/ (a11y.css со screen-reader-text через @utility и skip-link, focus.css с общим focus-visible), components/ (components.css как общий файл, конкретные компоненты добавляются по мере вёрстки). Порядок импортов base → utilities → components. Сборка проверена: все слои попали в выходной CSS, сайт отдаёт новый хеш, debug.log пуст — выполнено
+
 [2026-08-02] [документация] CLAUDE.md темы дополнен: структура файлов, критерий «переживёт ли смену темы» для выбора между mu-plugin и inc/, правило префикса slodoks_ — выполнено
 
 [2026-08-02] [тема] Тема slodoks активна (template и stylesheet в wp_options = slodoks), активация выполнена при установке WordPress — выполнено

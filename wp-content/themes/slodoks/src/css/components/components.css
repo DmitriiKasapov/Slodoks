@@ -1,0 +1,7 @@
+/*
+ * Shared component styles.
+ *
+ * Component-specific files (buttons.css, menu.css, forms.css, wysiwyg.css …)
+ * are added next to this one and imported from src/css/main.css as the
+ * Consal layout is built out.
+ */

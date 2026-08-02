@@ -1,0 +1,11 @@
+/*
+ * Custom properties that are not Tailwind tokens.
+ *
+ * Values that should generate utilities belong in base/theme.css instead —
+ * this file is for plain variables used inside other rules.
+ */
+
+:root {
+	/* Offset for anchor links, matches the fixed header height. */
+	--header-height: 0px;
+}
