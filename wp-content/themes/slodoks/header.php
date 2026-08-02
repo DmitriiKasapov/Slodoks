@@ -1,79 +1,74 @@
 <?php
 /**
- * The header for our theme
+ * The header for our theme.
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
+ * Displays the <head> section and everything up to the main content.
+ * Minimal default markup — the Consal layout is integrated later.
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
  * @package SloDoks
  */
 
+defined( 'ABSPATH' ) || exit;
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700|Anton" rel="stylesheet">
-
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?> data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div class="site-wrap"  id="home-section">
+<a class="skip-link screen-reader-text" href="#primary">
+	<?php esc_html_e( 'Skip to content', 'slodoks' ); ?>
+</a>
 
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-   
-      
-    <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+<div id="page" class="site">
 
-      <div class="container">
-        <div class="row align-items-center position-relative">
-          
-            
-            <div class="site-logo">
-              <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="text-black"><span class="text-primary"><?php bloginfo( 'name' ); ?></a>
-            </div>
-            
-              <nav class="site-navigation text-center ml-auto" role="navigation">
+	<header id="masthead" class="site-header">
 
-			  	<?php
-
-				
-				add_filter( 'nav_menu_link_attributes', 'slodoks_nav_link_atts');
-
-					wp_nav_menu(
-						array(
-							'theme_location' => 'header-menu',
-							'menu_id'        => 'primary-menu',
-							'menu_class'     =>  'site-menu main-menu js-clone-nav ml-auto d-none d-lg-block',
-							'container'      =>  '',
-						)
-					);
-
-					remove_filter( 'nav_menu_link_attributes', 'slodoks_nav_link_atts');
+		<div class="site-branding">
+			<?php
+			if ( has_custom_logo() ) {
+				the_custom_logo();
+			} elseif ( is_front_page() && is_home() ) {
 				?>
-                
-              </nav>
-          
-            
+				<h1 class="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</h1>
+				<?php
+			} else {
+				?>
+				<p class="site-title">
+					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
+				</p>
+				<?php
+			}
 
-          <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+			$slodoks_description = get_bloginfo( 'description', 'display' );
 
-        </div>
-      </div>
-      
-    </header>
+			if ( $slodoks_description || is_customize_preview() ) :
+				?>
+				<p class="site-description"><?php echo $slodoks_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+			<?php endif; ?>
+		</div><!-- .site-branding -->
 
+		<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
+			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Main menu', 'slodoks' ); ?>">
+				<?php
+				wp_nav_menu(
+					[
+						'theme_location' => 'header-menu',
+						'menu_id'        => 'primary-menu',
+						'container'      => '',
+					]
+				);
+				?>
+			</nav><!-- #site-navigation -->
+		<?php endif; ?>
 
+	</header><!-- #masthead -->
