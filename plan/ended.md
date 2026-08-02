@@ -23,4 +23,6 @@
 
 [2026-08-02] [админка] Создан mu-plugin wp-content/mu-plugins/slodoks-general.php — очистка дашборда и загрузка SVG. Портирован из проекта gamestore с исправлениями: remove_meta_box() вместо unset($wp_meta_boxes), приоритет хука 100 (иначе виджеты Rank Math/Elementor ещё не зарегистрированы), убраны мёртвые id виджетов (dashboard_incoming_links удалён из ядра в 3.8; plugins/recent_comments/recent_drafts слиты в dashboard_activity), SVG разрешён только администраторам (SVG это XML, можно вложить скрипт → XSS у авторов), webp убран как поддерживаемый ядром с 5.8, CSS-селектор превью сужен до img[src$=".svg"]. Синтаксис проверен php -l в контейнере — выполнено
 
-[2026-08-02] [окружение] WordPress установлен, админка доступна — выполнено
+[2026-08-02] [окружение] WordPress установлен, админка доступна. Название сайта Slodoks, home http://localhost:8002 — выполнено
+
+[2026-08-02] [тема] Тема slodoks активна (template и stylesheet в wp_options = slodoks), активация выполнена при установке WordPress — выполнено
