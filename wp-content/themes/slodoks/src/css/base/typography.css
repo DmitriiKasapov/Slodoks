@@ -40,11 +40,21 @@
 		@apply font-bold;
 	}
 
-	a {
+	/*
+	 * Links without a class — mostly editor content. Plain underline on
+	 * hover; the sliding one lives on .link and is used where we write the
+	 * markup ourselves.
+	 */
+	a:not([class]) {
 		@apply text-brand-500;
 
+		text-underline-offset: 3px;
+		text-decoration-thickness: 1px;
+		transition: color 0.25s ease;
+
 		&:hover {
-			@apply text-brand-900;
+			color: #1a6cff;
+			text-decoration: underline;
 		}
 	}
 }

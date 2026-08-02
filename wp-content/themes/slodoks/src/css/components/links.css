@@ -2,40 +2,19 @@
 	/*
 	 * Text links.
 	 *
-	 * Base colour is the brand blue set in base/typography.css; these classes
-	 * only decide what happens on hover. The underline variants draw the line
-	 * as a background gradient, so its thickness and distance from the text
-	 * do not depend on the font metrics.
+	 * Links we write ourselves get `.link`: the underline slides in from the
+	 * left. Links inside editor content come without classes, so base/
+	 * typography.css gives them a plain underline on hover instead — the
+	 * slide needs a background gradient, which is fragile in text we do not
+	 * control.
+	 *
+	 * The line is drawn as a background gradient so its thickness and offset
+	 * do not follow the font metrics and stay identical in Inter and
+	 * Montserrat.
 	 */
 	.link {
-		@apply text-brand-500;
+		@apply text-brand-500 no-underline;
 
-		transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-		text-decoration: none;
-	}
-
-	/* Hover goes lighter and more saturated. */
-	.link-light:hover,
-	.link-light.is-hover {
-		color: #1a6cff;
-	}
-
-	/* Hover goes darker, into the heading blue. */
-	.link-dark:hover,
-	.link-dark.is-hover {
-		@apply text-brand-900;
-	}
-
-	/* Same, but the CTA red — for links that lead to an action. */
-	.link-cta:hover,
-	.link-cta.is-hover {
-		color: var(--color-cta);
-	}
-
-	/*
-	 * Underline sliding in from the left.
-	 */
-	.link-underline {
 		-webkit-box-decoration-break: clone;
 		box-decoration-break: clone;
 		background-image: linear-gradient(currentColor, currentColor);
@@ -48,61 +27,40 @@
 			color 0.25s ease;
 	}
 
-	.link-underline:hover,
-	.link-underline.is-hover {
+	.link:hover {
 		background-size: 100% 1px;
+		color: #1a6cff;
 	}
 
-	/*
-	 * Underline that comes in from the left and leaves to the right.
-	 *
-	 * Two background layers: the right-anchored one shrinks away while the
-	 * left-anchored one grows, which reads as a single line passing through.
-	 */
-	.link-underline-through {
-		-webkit-box-decoration-break: clone;
-		box-decoration-break: clone;
-		background-image:
-			linear-gradient(currentColor, currentColor),
-			linear-gradient(currentColor, currentColor);
-		background-repeat: no-repeat;
-		background-position:
-			100% 100%,
-			0 100%;
-		background-size:
-			100% 1px,
-			0 1px;
-		padding-bottom: 2px;
-		transition:
-			background-size 0.55s cubic-bezier(0.4, 0, 0.2, 1),
-			color 0.25s ease;
+	/* Hover into the heading blue instead of lighter. */
+	.link-dark:hover {
+		@apply text-brand-900;
 	}
 
-	.link-underline-through:hover,
-	.link-underline-through.is-hover {
-		background-size:
-			0 1px,
-			100% 1px;
+	/* Hover into the CTA red — for links that lead to an action. */
+	.link-cta:hover {
+		color: var(--color-cta);
 	}
 
-	/* Plain underline, appearing on hover without any travel. */
-	.link-underline-hover {
+	/* No travel: the underline simply appears. Used in editor content. */
+	.link-plain {
+		@apply text-brand-500;
+
+		background-image: none;
 		padding-bottom: 2px;
 		text-underline-offset: 3px;
 		text-decoration-thickness: 1px;
 		transition: color 0.25s ease;
 	}
 
-	.link-underline-hover:hover,
-	.link-underline-hover.is-hover {
+	.link-plain:hover {
 		text-decoration: underline;
+		color: #1a6cff;
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		.link,
-		.link-underline,
-		.link-underline-through,
-		.link-underline-hover {
+		.link-plain {
 			transition-duration: 0.01ms;
 		}
 	}

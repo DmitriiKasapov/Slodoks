@@ -50,11 +50,14 @@ export default defineConfig(({ command }) => ({
 	},
 	server: {
 		port: 5173,
-		// Fall back to the next free port instead of failing: several projects
-		// may run at once, and .vite-hot always records the real port.
-		strictPort: false,
+		// The port is pinned on purpose: `origin` below has to match it, and
+		// a silent fallback to another port would break every asset URL.
+		strictPort: true,
 		// The site is served by Docker on another port, so the dev server is
 		// cross-origin for the browser.
 		cors: true,
+		// Without this, asset URLs in the injected CSS stay relative and the
+		// browser looks for fonts on the WordPress host instead of Vite.
+		origin: 'http://localhost:5173',
 	},
 }));
