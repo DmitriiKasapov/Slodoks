@@ -375,6 +375,19 @@
 		@apply rounded-none;
 	}
 
+	/* Radius candidates, kept in pixels so they can be compared exactly. */
+	.btn-r4 {
+		border-radius: 4px;
+	}
+
+	.btn-r5 {
+		border-radius: 5px;
+	}
+
+	.btn-r6 {
+		border-radius: 6px;
+	}
+
 	/* Respect users who asked for less motion. */
 	@media (prefers-reduced-motion: reduce) {
 		.btn,
