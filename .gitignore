@@ -45,3 +45,6 @@ docker-compose.override.yml
 .DS_Store
 Thumbs.db
 *.swp
+
+# README относится к репозиторию заготовки, не к этому проекту
+/README.md
