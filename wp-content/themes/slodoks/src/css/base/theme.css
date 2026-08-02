@@ -1,13 +1,59 @@
 @theme {
 	/*
-	 * SloDoks theme configuration.
-	 * Tailwind v4 is CSS-first: values declared here become utilities,
-	 * e.g. --color-brand-500 gives bg-brand-500 / text-brand-500.
+	 * SloDoks design tokens.
 	 *
-	 * Fill in the palette and type scale from the Consal design.
+	 * Tailwind v4 is CSS-first: every value here becomes a utility,
+	 * e.g. --color-brand-900 gives bg-brand-900 / text-brand-900.
+	 *
+	 * Palette is taken from the Consal template, with two corrections:
+	 * body and muted greys were too light to pass WCAG AA on white,
+	 * so they are darkened. Contrast ratios are noted per token.
 	 */
 
-	/* Fonts */
-	--font-sans: ui-sans-serif, system-ui, sans-serif;
-	--font-heading: var(--font-sans);
+	/* --- Brand blues (Consal) --- */
+	--color-brand-900: #00294b; /* headings, footer, topbar — 14.8:1 on white */
+	--color-brand-500: #0054dd; /* links, active states — 6.34:1 on white */
+
+	/* --- Call to action (Slovenian flag red) --- */
+	--color-cta: #c8102e; /* filled buttons, white text — 5.88:1 */
+	--color-cta-hover: #a80d26; /* 7.63:1 */
+
+	/* --- Text --- */
+	--color-ink: #222429; /* dense text — 15.5:1 */
+	--color-body: #6e6f70; /* paragraphs — 5.04:1 (Consal had #78797A, 4.36:1) */
+	--color-muted: #767778; /* captions, meta — 4.49:1 (Consal had #ABABAB, 2.3:1) */
+
+	/* --- Surfaces --- */
+	--color-line: #dddddd; /* borders, dividers — decorative only */
+	--color-surface: #ffffff;
+	--color-surface-soft: #f8fafc; /* section backgrounds, cards */
+
+	/*
+	 * Fonts.
+	 *
+	 * Consal uses Poppins and DM Sans, but neither ships Cyrillic and the
+	 * site content is in Russian. Montserrat keeps the geometric feel of
+	 * Poppins, Inter replaces DM Sans; both cover Cyrillic and the Slovenian
+	 * diacritics (č, š, ž). Files are self-hosted, not loaded from a CDN.
+	 */
+	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-heading: "Montserrat", var(--font-sans);
+
+	/*
+	 * Type scale.
+	 *
+	 * Hero size is fluid: Russian text runs about a quarter longer than the
+	 * English of the demo, so a fixed 75px breaks the layout on small screens.
+	 */
+	--text-hero: clamp(2rem, 1.2rem + 4vw, 4.6875rem); /* 32px → 75px */
+	--text-hero--line-height: 1.2;
+
+	--text-section: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); /* 28px → 44px */
+	--text-section--line-height: 1.25;
+
+	--text-subhead: 1.25rem; /* 20px */
+	--text-subhead--line-height: 1.2;
+
+	--text-base: 1rem; /* 16px */
+	--text-base--line-height: 1.6;
 }

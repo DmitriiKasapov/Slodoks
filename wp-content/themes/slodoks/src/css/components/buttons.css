@@ -1,0 +1,24 @@
+/*
+ * Buttons.
+ *
+ * The CTA red is also the natural colour for form errors, so the two are
+ * separated by weight, not hue: CTA is always a filled button, errors are
+ * always text or an outline with an icon. Never a filled red error box.
+ */
+@utility btn-cta {
+	@apply inline-flex items-center justify-center px-6 py-3 font-semibold;
+	@apply bg-cta text-white transition-colors;
+
+	&:hover {
+		@apply bg-cta-hover;
+	}
+}
+
+@utility btn-outline {
+	@apply inline-flex items-center justify-center px-6 py-3 font-semibold;
+	@apply border-2 border-brand-900 text-brand-900 transition-colors;
+
+	&:hover {
+		@apply bg-brand-900 text-white;
+	}
+}
