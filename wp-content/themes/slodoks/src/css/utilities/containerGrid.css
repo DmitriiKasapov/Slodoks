@@ -1,0 +1,88 @@
+/*
+ * 12-column named grid.
+ *
+ * A section gets `container-grid`, its inner wrapper gets `content`, and the
+ * content lands in the centred 12-column track with responsive side padding.
+ * Elements can break out of it with `outer`, or span a chosen number of
+ * columns with content-start-* / content-span-*.
+ *
+ *   <section class="container-grid">
+ *     <div class="content">…</div>
+ *   </section>
+ */
+
+@utility container-grid {
+	--max: calc((var(--container-max-width) - (var(--gap) * 11)) / 12);
+	display: grid;
+	grid-template-columns:
+		minmax(0, 1fr)
+		[outer-start]
+		var(--padding-px)
+		repeat(5, [content-start] minmax(0, var(--max)) [content-gap] var(--gap))
+		[content-start]
+		minmax(0, var(--max))
+		[content-gap]
+		calc(var(--gap) / 2)
+		[half]
+		calc(var(--gap) / 2)
+		repeat(5, [content-start] minmax(0, var(--max)) [content-gap] var(--gap))
+		[content-start] minmax(0, var(--max))
+		[content-gap content-end]
+		var(--padding-px)
+		[outer-end]
+		minmax(0, 1fr);
+	grid-auto-rows: auto;
+	width: 100%;
+}
+
+@utility inner-grid {
+	--max: calc((var(--container-max-width) - (var(--gap) * 11)) / 12);
+	display: grid;
+	grid-template-columns:
+		repeat(5, [content-start] minmax(0, var(--max)) [content-gap] var(--gap))
+		[content-start]
+		minmax(0, var(--max))
+		[content-gap]
+		calc(var(--gap) / 2)
+		[half]
+		calc(var(--gap) / 2)
+		repeat(5, [content-start] minmax(0, var(--max)) [content-gap] var(--gap))
+		[content-start] minmax(0, var(--max))
+		[content-gap content-end];
+	grid-auto-rows: auto;
+	width: 100%;
+}
+
+@utility outer {
+	grid-column: outer;
+}
+
+@utility col-end-half {
+	grid-column-end: half;
+}
+
+@utility col-start-half {
+	grid-column-start: half;
+}
+
+@utility content {
+	grid-column: content;
+}
+
+@utility content-start-* {
+	grid-column-start: content-start --value(integer);
+	grid-column-end: span --modifier(integer) content-gap;
+}
+
+@utility content-gap-* {
+	grid-column-start: content-gap --value(integer);
+	grid-column-end: span --modifier(integer) content-start;
+}
+
+@utility content-span-* {
+	grid-column-end: span --value(integer) content-gap;
+}
+
+@utility content-span-gap-* {
+	grid-column-end: span --value(integer) content-start;
+}

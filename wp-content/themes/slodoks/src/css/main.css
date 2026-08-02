@@ -1,14 +1,17 @@
 @import "tailwindcss";
 
-/* Base */
 @import "./base/theme.css";
 @import "./base/root.css";
+@import "./base/fonts.css";
+@import "./base/properties.css";
+@import "./base/keyframes.css";
 @import "./base/base.css";
 @import "./base/typography.css";
 
 /* Utilities — loaded before components so components can use them */
-@import "./utilities/a11y.css";
+@import "./utilities/containerGrid.css";
 @import "./utilities/focus.css";
+@import "./utilities/a11y.css";
 
 /* Components */
 @import "./components/buttons.css";

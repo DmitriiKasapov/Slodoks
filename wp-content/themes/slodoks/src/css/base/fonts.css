@@ -1,0 +1,48 @@
+/*
+ * Self-hosted fonts.
+ *
+ * Consal uses Poppins and DM Sans, but neither ships Cyrillic while the site
+ * content is in Russian. Montserrat keeps the geometric feel for headings,
+ * Inter carries the body text. Both cover Cyrillic and the Slovenian
+ * diacritics (č, š, ž).
+ *
+ * The blocks stay commented until the files are added to src/fonts/ —
+ * Vite fails the build on a url() it cannot resolve.
+ *
+ * Download woff2 with the latin, latin-ext and cyrillic subsets only, then
+ * uncomment. Keep font-display: swap so text renders before the font lands.
+ */
+
+/*
+@font-face {
+	font-family: "Inter";
+	src: url("../../fonts/Inter-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("../../fonts/Inter-Medium.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("../../fonts/Inter-SemiBold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Montserrat";
+	src: url("../../fonts/Montserrat-Bold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+}
+*/

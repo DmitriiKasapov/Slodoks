@@ -1,11 +1,29 @@
-/*
- * Custom properties that are not Tailwind tokens.
- *
- * Values that should generate utilities belong in base/theme.css instead —
- * this file is for plain variables used inside other rules.
- */
-
+/* Breakpoint variables */
 :root {
 	/* Offset for anchor links, matches the fixed header height. */
 	--header-height: 0px;
+
+	@media (width >= theme(--breakpoint-xs)) {
+		--padding-px: var(--padding-xs);
+	}
+	@media (width >= theme(--breakpoint-sm)) {
+		--padding-px: var(--padding-sm);
+	}
+	@media (width >= theme(--breakpoint-md)) {
+		--gap: var(--gap-md);
+		--padding-px: var(--padding-md);
+	}
+	@media (width >= theme(--breakpoint-lg)) {
+		--padding-px: var(--padding-lg);
+	}
+	@media (width >= theme(--breakpoint-xl)) {
+		--gap: var(--gap-xl);
+		--padding-px: var(--padding-xl);
+	}
+	@media (width >= theme(--breakpoint-2xl)) {
+		--padding-px: var(--padding-2xl);
+	}
+	@media (width >= theme(--breakpoint-3xl)) {
+		--padding-px: var(--padding-3xl);
+	}
 }

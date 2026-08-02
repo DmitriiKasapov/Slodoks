@@ -1,59 +1,73 @@
 @theme {
 	/*
-	 * SloDoks design tokens.
+	 * SloDoks theme configuration.
 	 *
 	 * Tailwind v4 is CSS-first: every value here becomes a utility,
 	 * e.g. --color-brand-900 gives bg-brand-900 / text-brand-900.
 	 *
-	 * Palette is taken from the Consal template, with two corrections:
-	 * body and muted greys were too light to pass WCAG AA on white,
-	 * so they are darkened. Contrast ratios are noted per token.
+	 * Palette comes from the Consal template, with two accessibility fixes:
+	 * body and muted greys were below WCAG AA on white and are darkened.
+	 * Contrast ratios are noted per token.
 	 */
 
-	/* --- Brand blues (Consal) --- */
+	/* Fonts */
+	--font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+	--font-montserrat: "Montserrat", var(--font-inter);
+
+	/* Colors — brand blues (Consal) */
 	--color-brand-900: #00294b; /* headings, footer, topbar — 14.8:1 on white */
+	--color-brand-700: #003a6b; /* hover on dark surfaces */
 	--color-brand-500: #0054dd; /* links, active states — 6.34:1 on white */
+	--color-brand-50: #e8f0fc; /* tinted backgrounds */
 
-	/* --- Call to action (Slovenian flag red) --- */
+	/* Colors — call to action (red of the Slovenian flag) */
 	--color-cta: #c8102e; /* filled buttons, white text — 5.88:1 */
-	--color-cta-hover: #a80d26; /* 7.63:1 */
+	--color-cta-dark: #a80d26; /* hover — 7.63:1 */
+	--color-cta-50: #fdeaed; /* tags, list markers */
 
-	/* --- Text --- */
+	/* Colors — text */
 	--color-ink: #222429; /* dense text — 15.5:1 */
-	--color-body: #6e6f70; /* paragraphs — 5.04:1 (Consal had #78797A, 4.36:1) */
-	--color-muted: #767778; /* captions, meta — 4.49:1 (Consal had #ABABAB, 2.3:1) */
+	--color-body: #6e6f70; /* paragraphs — 5.04:1 (Consal #78797A was 4.36:1) */
+	--color-muted: #767778; /* captions, meta — 4.49:1 (Consal #ABABAB was 2.3:1) */
 
-	/* --- Surfaces --- */
-	--color-line: #dddddd; /* borders, dividers — decorative only */
+	/* Colors — surfaces */
+	--color-line: #dddddd; /* borders, dividers */
 	--color-surface: #ffffff;
 	--color-surface-soft: #f8fafc; /* section backgrounds, cards */
 
-	/*
-	 * Fonts.
-	 *
-	 * Consal uses Poppins and DM Sans, but neither ships Cyrillic and the
-	 * site content is in Russian. Montserrat keeps the geometric feel of
-	 * Poppins, Inter replaces DM Sans; both cover Cyrillic and the Slovenian
-	 * diacritics (č, š, ž). Files are self-hosted, not loaded from a CDN.
-	 */
-	--font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-	--font-heading: "Montserrat", var(--font-sans);
+	--color-transparent: transparent;
 
-	/*
-	 * Type scale.
-	 *
-	 * Hero size is fluid: Russian text runs about a quarter longer than the
-	 * English of the demo, so a fixed 75px breaks the layout on small screens.
-	 */
-	--text-hero: clamp(2rem, 1.2rem + 4vw, 4.6875rem); /* 32px → 75px */
-	--text-hero--line-height: 1.2;
+	/* Shadows (match Tailwind defaults) */
+	--shadow-*: initial;
+	--shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	--shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+	--shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
-	--text-section: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); /* 28px → 44px */
-	--text-section--line-height: 1.25;
+	/* Container */
+	--container-max-width: 1200px;
 
-	--text-subhead: 1.25rem; /* 20px */
-	--text-subhead--line-height: 1.2;
+	/* Responsive paddings and gaps */
+	--gap: 0.5rem;
+	--gap-md: 2rem;
+	--gap-xl: 2rem;
 
-	--text-base: 1rem; /* 16px */
-	--text-base--line-height: 1.6;
+	--padding-px: 1.25rem;
+	--padding-xs: 1.25rem;
+	--padding-sm: 1.75rem;
+	--padding-md: 3rem;
+	--padding-lg: 4rem;
+	--padding-xl: 6rem;
+	--padding-2xl: 7.5rem;
+	--padding-3xl: 8.75rem;
+
+	/* Breakpoints */
+	--breakpoint-xs: 23rem; /* 368px */
+	--breakpoint-sm: 36rem; /* 576px */
+	--breakpoint-md: 48rem; /* 768px */
+	--breakpoint-lg: 58rem; /* 926px */
+	--breakpoint-xl: 64rem; /* 1024px */
+	--breakpoint-2xl: 75rem; /* 1200px */
+	--breakpoint-3xl: 87rem; /* 1392px */
 }

@@ -1,21 +1,50 @@
-/*
- * Base typography.
- *
- * Only defaults that apply site-wide. Styling for editor content
- * (the_content output) belongs in components/wysiwyg.css.
- */
-
 @layer base {
 	body {
-		@apply font-sans antialiased;
+		@apply font-inter text-body;
 	}
 
 	h1,
+	.h1 {
+		@apply font-montserrat text-ink font-bold leading-tight;
+		font-size: clamp(2rem, 1.2rem + 4vw, 4.6875rem); /* 32px → 75px */
+	}
+
 	h2,
+	.h2 {
+		@apply font-montserrat text-ink font-bold leading-tight;
+		font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); /* 28px → 44px */
+	}
+
 	h3,
+	.h3 {
+		@apply font-montserrat text-ink text-2xl font-bold leading-snug;
+	}
+
 	h4,
+	.h4 {
+		@apply font-montserrat text-ink text-xl font-bold leading-snug;
+	}
+
 	h5,
-	h6 {
-		@apply font-heading text-balance;
+	.h5 {
+		@apply font-montserrat text-ink text-lg font-semibold leading-normal;
+	}
+
+	h6,
+	.h6 {
+		@apply font-montserrat text-ink text-base font-semibold leading-normal;
+	}
+
+	b,
+	strong {
+		@apply font-bold;
+	}
+
+	a {
+		@apply text-brand-500;
+
+		&:hover {
+			@apply text-brand-900;
+		}
 	}
 }
