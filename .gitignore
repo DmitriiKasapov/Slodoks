@@ -38,6 +38,3 @@ docker-compose.override.yml
 .DS_Store
 Thumbs.db
 *.swp
-
-# Leftover embedded repo from the old Elementor training project
-wp-content/themes/slodoks/plugins/
