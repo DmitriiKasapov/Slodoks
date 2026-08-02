@@ -29,6 +29,10 @@ node_modules/
 vendor/
 *.map
 
+# Vite dev-server marker: local runtime state, never deployed.
+# dist/ IS committed — the hosting has no Node, so built assets ship with the repo.
+.vite-hot
+
 # Environment and local overrides
 .env
 .env.*

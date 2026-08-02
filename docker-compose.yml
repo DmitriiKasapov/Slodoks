@@ -22,6 +22,9 @@ services:
       WORDPRESS_DB_NAME: slodoks
       WORDPRESS_DB_USER: slodoks_user
       WORDPRESS_DB_PASSWORD: slodoks_pass
+      # Read by wp_get_environment_type(). The theme only trusts the Vite
+      # dev-server marker in local/development environments.
+      WP_ENVIRONMENT_TYPE: local
       # WP_DEBUG itself is defined earlier in wp-config.php from this var,
       # so it must stay set. The remaining constants are added via
       # WORDPRESS_CONFIG_EXTRA (eval'd afterwards).

@@ -4,11 +4,15 @@
   "description": "SloDoks WordPress theme",
   "license": "GPL-2.0-or-later",
   "private": true,
+  "type": "module",
   "devDependencies": {
-    "@wordpress/scripts": "^30.0.0"
+    "@tailwindcss/vite": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0"
   },
   "scripts": {
-    "lint:css": "wp-scripts lint-style 'assets/css/**/*.css'",
-    "lint:js": "wp-scripts lint-js 'assets/js/**/*.js'"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   }
 }

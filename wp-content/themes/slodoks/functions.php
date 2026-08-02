@@ -29,14 +29,3 @@ foreach ( $slodoks_modules as $slodoks_module ) {
 }
 
 unset( $slodoks_modules, $slodoks_module );
-
-/**
- * Redux theme options.
- *
- * Loaded on `init` because the config uses translation functions,
- * which must not run before translations are available.
- */
-function slodoks_load_options_panel(): void {
-	require_once get_template_directory() . '/inc/options-panel.php';
-}
-add_action( 'init', 'slodoks_load_options_panel', 0 );

@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens.
+ * Tailwind v4 is CSS-first: values declared here become utilities
+ * (e.g. --color-brand-500 gives bg-brand-500, text-brand-500).
+ * Fill these in from the Consal design once the palette is settled.
+ */
+@theme {
+	--font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+	/* Skip link becomes visible once focused with the keyboard. */
+	.skip-link:focus-visible {
+		@apply fixed top-2 left-2 z-[100000] m-0 w-auto h-auto px-5 py-3 bg-white text-black;
+
+		clip-path: none;
+	}
+}
