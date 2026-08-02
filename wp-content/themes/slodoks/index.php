@@ -17,6 +17,15 @@ get_header();
 
 	<main id="primary" class="site-main">
 
+		<?php // Link to the design reference page, remove once it is no longer needed. ?>
+		<section class="container-grid py-6">
+			<div class="content">
+				<a class="btn btn-white btn-sm" href="<?php echo esc_url( home_url( '/test/' ) ); ?>">
+					Тест — кнопки
+				</a>
+			</div>
+		</section>
+
 		<?php
 		if ( have_posts() ) :
 

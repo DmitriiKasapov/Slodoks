@@ -1,1 +1,14 @@
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@property */
+
+/*
+ * Radius of the button hover wave.
+ *
+ * A gradient colour stop cannot be transitioned unless the browser knows the
+ * type of the custom property behind it, which is what registering it here
+ * does. Without this the wave would jump instead of growing.
+ */
+@property --btn-wave {
+	syntax: "<percentage>";
+	initial-value: 0%;
+	inherits: false;
+}

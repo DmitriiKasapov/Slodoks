@@ -1,56 +1,390 @@
 @layer components {
 	/*
-	 * Base button.
+	 * Buttons.
 	 *
 	 * The CTA red is also the natural colour for form errors, so the two are
 	 * told apart by weight, not hue: actions are filled buttons, errors are
 	 * text or an outline with an icon. Never a filled red error box.
+	 *
+	 * Each variant declares its own hover colour and glow tint as custom
+	 * properties, so the hover treatments below work on any of them without
+	 * knowing the palette.
+	 *
+	 * Every hover rule is paired with an .is-hover class so the state can be
+	 * frozen on the test page and compared against the resting one.
 	 */
 	.btn {
 		@apply inline-flex items-center justify-center gap-2 px-6 py-3;
-		@apply font-semibold tracking-normal rounded-xl shadow-sm;
-		@apply transition-all duration-200;
-		@apply disabled:opacity-50 disabled:cursor-not-allowed;
+		@apply font-semibold tracking-normal rounded-xl border-2;
+		@apply disabled:opacity-50 disabled:pointer-events-none;
+
+		transition:
+			background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+			color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+			box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+			transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	/* Primary action — red, for conversions: enquiry, call, chat. */
+	/* Pressed state — same for every variant. */
+	.btn:active {
+		transform: translateY(1px);
+	}
+
+	/* --- Variants ------------------------------------------------------- */
+
 	.btn-cta {
-		@apply bg-cta text-surface border-2 border-cta;
+		--btn-hover: var(--color-cta-dark);
+		--btn-glow: 200 16 46;
+
+		@apply bg-cta border-cta text-surface;
 	}
 
-	.btn-cta:hover {
-		@apply bg-cta-dark border-cta-dark shadow-lg;
+	.btn-second {
+		--btn-hover: var(--color-brand-700);
+		--btn-glow: 0 41 75;
+
+		@apply bg-brand-900 border-brand-900 text-surface;
 	}
 
-	/* Secondary action — outlined, never competes with the CTA. */
-	.btn-outline {
-		@apply bg-transparent text-brand-900 border-2 border-brand-900;
+	.btn-white {
+		--btn-hover: var(--color-surface);
+		--btn-glow: 0 41 75;
+
+		@apply bg-surface border-line text-brand-900;
 	}
 
-	.btn-outline:hover {
-		@apply bg-brand-900 text-surface;
-	}
-
-	/* Same, on a dark background. */
 	.btn-outline-light {
-		@apply bg-transparent text-surface border-2 border-surface;
+		--btn-hover: var(--color-surface);
+		--btn-glow: 255 255 255;
+
+		@apply bg-transparent border-surface text-surface;
 	}
 
-	.btn-outline-light:hover {
-		@apply bg-surface text-brand-900;
+	/* --- Hover treatments ------------------------------------------------ */
+
+	/*
+	 * 1. Tint — the plain one: colour shifts, nothing moves.
+	 *    Quiet, predictable, fine for secondary actions.
+	 */
+	.hv-tint:hover,
+	.hv-tint.is-hover {
+		background-color: var(--btn-hover);
+		border-color: var(--btn-hover);
 	}
 
-	/* Quiet action — links styled as buttons, filters, pagination. */
-	.btn-ghost {
-		@apply bg-brand-50 text-brand-900 border-2 border-transparent shadow-none;
+	.btn-white.hv-tint:hover,
+	.btn-white.hv-tint.is-hover {
+		@apply border-brand-900;
 	}
 
-	.btn-ghost:hover {
-		@apply bg-brand-500 text-surface;
+	.btn-outline-light.hv-tint:hover,
+	.btn-outline-light.hv-tint.is-hover {
+		@apply text-brand-900;
 	}
 
-	/* Small variant for cards and toolbars. */
+	/*
+	 * 2. Lift — the button rises and casts a shadow in its own colour.
+	 *    Reads as physical without any animation trickery.
+	 */
+	.hv-lift:hover,
+	.hv-lift.is-hover {
+		background-color: var(--btn-hover);
+		border-color: var(--btn-hover);
+		transform: translateY(-2px);
+		box-shadow: 0 12px 24px -10px rgb(var(--btn-glow) / 0.65);
+	}
+
+	.btn-white.hv-lift:hover,
+	.btn-white.hv-lift.is-hover {
+		@apply border-brand-900;
+	}
+
+	.btn-outline-light.hv-lift:hover,
+	.btn-outline-light.hv-lift.is-hover {
+		@apply text-brand-900;
+	}
+
+	/*
+	 * 3. Ring — a soft ring expands outwards and fades.
+	 *    Same idea as the button in the Laravel project.
+	 */
+	.hv-ring {
+		position: relative;
+	}
+
+	.hv-ring::before {
+		content: "";
+		position: absolute;
+		inset: -2px;
+		border-radius: inherit;
+		box-shadow: 0 0 0 0 rgb(var(--btn-glow) / 0.45);
+		transition: box-shadow 0.5s ease-out;
+		pointer-events: none;
+	}
+
+	.hv-ring:hover::before,
+	.hv-ring.is-hover::before {
+		box-shadow: 0 0 0 10px rgb(var(--btn-glow) / 0);
+	}
+
+	.hv-ring:hover,
+	.hv-ring.is-hover {
+		background-color: var(--btn-hover);
+		border-color: var(--btn-hover);
+	}
+
+	.btn-white.hv-ring:hover,
+	.btn-white.hv-ring.is-hover {
+		@apply border-brand-900;
+	}
+
+	/*
+	 * 4. Fill — the new colour wipes in from the left.
+	 *    Done with background-size so the text needs no extra wrapper.
+	 */
+	.hv-fill {
+		background-image: linear-gradient(to right, var(--btn-hover), var(--btn-hover));
+		background-repeat: no-repeat;
+		background-size: 0 100%;
+		transition:
+			background-size 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.hv-fill:hover,
+	.hv-fill.is-hover {
+		background-size: 100% 100%;
+	}
+
+	/*
+	 * Fill colours are picked by eye rather than by formula: red reads better
+	 * going a step darker, blue a step lighter. Same shift in both directions
+	 * would make one of them look muddy.
+	 */
+	.btn-cta.hv-fill {
+		--btn-hover: var(--color-cta-dark);
+	}
+
+	.btn-second.hv-fill {
+		--btn-hover: #004e8c;
+	}
+
+	.btn-white.hv-fill {
+		--btn-hover: var(--color-brand-900);
+	}
+
+	/*
+	 * 5. Gradient slide — the button carries a light-to-dark gradient, and a
+	 * second, deeper gradient slides in from the left on hover.
+	 *
+	 * Two background layers on one element: the incoming one is on top with
+	 * its width animated from zero, the resting one stays underneath.
+	 */
+	.hv-slide {
+		/* Fallbacks: an undefined stop makes the whole gradient invalid and
+		   the button loses its background entirely. */
+		--btn-from: transparent;
+		--btn-to: transparent;
+		--btn-in-from: transparent;
+		--btn-in-to: transparent;
+
+		background-image:
+			linear-gradient(135deg, var(--btn-in-from), var(--btn-in-to)),
+			linear-gradient(135deg, var(--btn-from), var(--btn-to));
+		background-repeat: no-repeat;
+		/* Without this the gradient stops at the padding box and the base
+		   colour shows through the border zone as a dark rim. */
+		background-origin: border-box;
+		background-position:
+			left center,
+			center;
+		background-size:
+			0 100%,
+			100% 100%;
+		transition:
+			background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.4s ease,
+			color 0.4s ease,
+			transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.hv-slide:hover,
+	.hv-slide.is-hover {
+		background-size:
+			100% 100%,
+			100% 100%;
+	}
+
+	/*
+	 * The resting gradient runs light to dark, the incoming one is brighter
+	 * and more saturated. Darkening drops saturation along with lightness and
+	 * turns red into wine, which is what made the earlier pass look dusty.
+	 */
+	.btn-cta.hv-slide {
+		--btn-from: #da1637;
+		--btn-to: var(--color-cta);
+		--btn-in-from: #ff2d55;
+		--btn-in-to: #e60036;
+
+		border-color: transparent;
+	}
+
+	.btn-second.hv-slide {
+		--btn-from: #004e8c;
+		--btn-to: var(--color-brand-900);
+		--btn-in-from: #1a6cff;
+		--btn-in-to: var(--color-brand-500);
+
+		border-color: transparent;
+	}
+
+	.btn-white.hv-slide {
+		--btn-from: var(--color-surface);
+		--btn-to: #eef1f5;
+		--btn-in-from: #1a6cff;
+		--btn-in-to: var(--color-brand-500);
+	}
+
+	/* The incoming gradient runs under the border, so hiding it lets the
+	   colour reach the edge instead of leaving a ring of the old one. */
+	.btn-white.hv-slide:hover,
+	.btn-white.hv-slide.is-hover {
+		@apply text-surface;
+
+		border-color: transparent;
+	}
+
+	.btn-outline-light.hv-slide {
+		--btn-in-from: var(--color-surface);
+		--btn-in-to: #e6ebf1;
+	}
+
+	.btn-outline-light.hv-slide:hover,
+	.btn-outline-light.hv-slide.is-hover {
+		@apply text-brand-900;
+
+		border-color: transparent;
+	}
+
+	.btn-white.hv-fill:hover,
+	.btn-white.hv-fill.is-hover {
+		@apply text-surface border-brand-900;
+	}
+
+	.btn-outline-light.hv-fill:hover,
+	.btn-outline-light.hv-fill.is-hover {
+		@apply text-brand-900;
+	}
+
+	/*
+	 * 5. Cursor wave — the fill grows from wherever the pointer entered.
+	 *
+	 * src/js/buttons.js writes the entry point into --btn-x / --btn-y, so
+	 * moving from one button to the next restarts the wave at the new edge
+	 * and it reads as if the effect follows the cursor.
+	 *
+	 * Drawn as a background gradient rather than a pseudo-element: no extra
+	 * markup around the label and nothing to stack above it.
+	 */
+	.hv-cursor {
+		--btn-x: 50%;
+		--btn-y: 50%;
+
+		background-image: radial-gradient(
+			circle at var(--btn-x) var(--btn-y),
+			var(--btn-hover) var(--btn-wave),
+			transparent var(--btn-wave)
+		);
+		transition:
+			--btn-wave 0.75s cubic-bezier(0.4, 0, 0.2, 1),
+			border-color 0.4s ease,
+			color 0.4s ease,
+			transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.hv-cursor:hover,
+	.hv-cursor.is-hover {
+		--btn-wave: 150%;
+	}
+
+	/*
+	 * Filled buttons keep the border for sizing only, never for looks: the
+	 * background is painted under it, so a transparent border disappears
+	 * while the wave still reaches the very edge. Otherwise the old colour
+	 * stays as a ring around the growing wave.
+	 */
+	.btn-cta.hv-cursor,
+	.btn-second.hv-cursor {
+		border-color: transparent;
+	}
+
+	.btn-white.hv-cursor {
+		--btn-hover: var(--color-brand-900);
+	}
+
+	/*
+	 * Brighter wave.
+	 *
+	 * The darker hover reads as dusty because it drops saturation along with
+	 * lightness. These go the other way: lighter and more saturated than the
+	 * resting colour, still passing 4.5:1 against white text.
+	 */
+	.hv-bright.btn-cta {
+		--btn-hover: #e60036; /* 4.75:1 */
+	}
+
+	.hv-bright.btn-second {
+		--btn-hover: var(--color-brand-500); /* 6.34:1 */
+	}
+
+	.hv-bright.btn-white {
+		--btn-hover: var(--color-brand-500);
+	}
+
+	.hv-bright.btn-outline-light {
+		--btn-hover: var(--color-surface);
+	}
+
+	.btn-white.hv-cursor:hover,
+	.btn-white.hv-cursor.is-hover {
+		@apply text-surface border-brand-900;
+	}
+
+	.btn-outline-light.hv-cursor:hover,
+	.btn-outline-light.hv-cursor.is-hover {
+		@apply text-brand-900;
+	}
+
+	/* --- Sizes and shapes ------------------------------------------------ */
+
 	.btn-sm {
 		@apply px-4 py-2 text-sm rounded-lg;
+	}
+
+	.btn-lg {
+		@apply px-8 py-4 text-lg;
+	}
+
+	.btn-pill {
+		@apply rounded-full;
+	}
+
+	.btn-sharp {
+		@apply rounded-none;
+	}
+
+	/* Respect users who asked for less motion. */
+	@media (prefers-reduced-motion: reduce) {
+		.btn,
+		.hv-ring::before {
+			transition-duration: 0.01ms;
+		}
+
+		.hv-lift:hover,
+		.hv-lift.is-hover {
+			transform: none;
+		}
 	}
 }
