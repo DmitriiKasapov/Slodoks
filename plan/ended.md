@@ -25,4 +25,8 @@
 
 [2026-08-02] [окружение] WordPress установлен, админка доступна. Название сайта Slodoks, home http://localhost:8002 — выполнено
 
+[2026-08-02] [тема] Реструктуризация темы: functions.php разбит на модули inc/setup.php (supports, меню, сайдбары), inc/enqueue.php (стили и скрипты), inc/template-tags.php (хелперы). В functions.php осталась константа SLODOKS_VERSION и цикл подключения модулей. Создана отсутствовавшая папка template-parts/ (content, content-page, content-search, content-none) — index.php, archive.php и search.php вызывали get_template_part() для несуществующих файлов, из-за чего циклы выводили пустоту. Префикс elementor_ и text domain 'elementor' переименованы в slodoks (в style.css Text Domain был slodoks — переводы не подхватились бы вообще), opt_name Redux → slodoks_options, languages/elementor.pot → slodoks.pot. Удалён дубль фильтра nav_menu_link_attributes. Все файлы проверены php -l, шаблоны проверены запросами: главная, запись, страница, поиск, 404, админка — debug.log пуст — выполнено
+
+[2026-08-02] [документация] CLAUDE.md темы дополнен: структура файлов, критерий «переживёт ли смену темы» для выбора между mu-plugin и inc/, правило префикса slodoks_ — выполнено
+
 [2026-08-02] [тема] Тема slodoks активна (template и stylesheet в wp_options = slodoks), активация выполнена при установке WordPress — выполнено
