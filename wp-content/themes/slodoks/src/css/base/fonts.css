@@ -1,48 +1,111 @@
 /*
  * Self-hosted fonts.
  *
- * Consal uses Poppins and DM Sans, but neither ships Cyrillic while the site
- * content is in Russian. Montserrat keeps the geometric feel for headings,
- * Inter carries the body text. Both cover Cyrillic and the Slovenian
- * diacritics (č, š, ž).
+ * Inter carries the body text, Montserrat the headings. Both cover Cyrillic
+ * and the Slovenian diacritics, unlike the Poppins and DM Sans of the Consal
+ * template.
  *
- * The blocks stay commented until the files are added to src/fonts/ —
- * Vite fails the build on a url() it cannot resolve.
- *
- * Download woff2 with the latin, latin-ext and cyrillic subsets only, then
- * uncomment. Keep font-display: swap so text renders before the font lands.
+ * Only woff2 and woff are wired up. The eot and ttf files stay in the folder
+ * but are not referenced: eot targets Internet Explorer, retired in 2022, and
+ * ttf browsers predating woff. Together they added 9 MB to the build that no
+ * browser would ever request.
  */
 
-/*
 @font-face {
-	font-family: "Inter";
-	src: url("../../fonts/Inter-Regular.woff2") format("woff2");
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
+  font-family: "Inter";
+  src: url("@/fonts/Inter/Inter-Regular.woff2") format("woff2"),
+    url("@/fonts/Inter/Inter-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: "Inter";
-	src: url("../../fonts/Inter-Medium.woff2") format("woff2");
-	font-style: normal;
-	font-weight: 500;
-	font-display: swap;
+  font-family: "Inter";
+  src: url("@/fonts/Inter/Inter-Medium.woff2") format("woff2"),
+    url("@/fonts/Inter/Inter-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: "Inter";
-	src: url("../../fonts/Inter-SemiBold.woff2") format("woff2");
-	font-style: normal;
-	font-weight: 600;
-	font-display: swap;
+  font-family: "Inter";
+  src: url("@/fonts/Inter/Inter-SemiBold.woff2") format("woff2"),
+    url("@/fonts/Inter/Inter-SemiBold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
 }
 
 @font-face {
-	font-family: "Montserrat";
-	src: url("../../fonts/Montserrat-Bold.woff2") format("woff2");
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
+  font-family: "Inter";
+  src: url("@/fonts/Inter/Inter-Bold.woff2") format("woff2"),
+    url("@/fonts/Inter/Inter-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
 }
-*/
+
+@font-face {
+  font-family: "Inter";
+  src: url("@/fonts/Inter/Inter-Black.woff2") format("woff2"),
+    url("@/fonts/Inter/Inter-Black.woff") format("woff");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("@/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2"),
+    url("@/fonts/Montserrat/Montserrat-Regular.woff") format("woff");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("@/fonts/Montserrat/Montserrat-Medium.woff2") format("woff2"),
+    url("@/fonts/Montserrat/Montserrat-Medium.woff") format("woff");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("@/fonts/Montserrat/Montserrat-SemiBold.woff2") format("woff2"),
+    url("@/fonts/Montserrat/Montserrat-SemiBold.woff") format("woff");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("@/fonts/Montserrat/Montserrat-Bold.woff2") format("woff2"),
+    url("@/fonts/Montserrat/Montserrat-Bold.woff") format("woff");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("@/fonts/Montserrat/Montserrat-ExtraBold.woff2") format("woff2"),
+    url("@/fonts/Montserrat/Montserrat-ExtraBold.woff") format("woff");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("@/fonts/Montserrat/Montserrat-Black.woff2") format("woff2"),
+    url("@/fonts/Montserrat/Montserrat-Black.woff") format("woff");
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+}

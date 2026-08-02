@@ -1,11 +1,123 @@
 {
+  "src/fonts/Inter/Inter-Black.woff": {
+    "file": "assets/Inter-Black-C8uLBNKl.woff",
+    "src": "src/fonts/Inter/Inter-Black.woff"
+  },
+  "src/fonts/Inter/Inter-Black.woff2": {
+    "file": "assets/Inter-Black-PCIGMC9y.woff2",
+    "src": "src/fonts/Inter/Inter-Black.woff2"
+  },
+  "src/fonts/Inter/Inter-Bold.woff": {
+    "file": "assets/Inter-Bold-Dm1wsqGD.woff",
+    "src": "src/fonts/Inter/Inter-Bold.woff"
+  },
+  "src/fonts/Inter/Inter-Bold.woff2": {
+    "file": "assets/Inter-Bold-CQHYVgG_.woff2",
+    "src": "src/fonts/Inter/Inter-Bold.woff2"
+  },
+  "src/fonts/Inter/Inter-Medium.woff": {
+    "file": "assets/Inter-Medium-NQOIbdhU.woff",
+    "src": "src/fonts/Inter/Inter-Medium.woff"
+  },
+  "src/fonts/Inter/Inter-Medium.woff2": {
+    "file": "assets/Inter-Medium-D5YUpoRx.woff2",
+    "src": "src/fonts/Inter/Inter-Medium.woff2"
+  },
+  "src/fonts/Inter/Inter-Regular.woff": {
+    "file": "assets/Inter-Regular-C05ryuRh.woff",
+    "src": "src/fonts/Inter/Inter-Regular.woff"
+  },
+  "src/fonts/Inter/Inter-Regular.woff2": {
+    "file": "assets/Inter-Regular-6EfshmZx.woff2",
+    "src": "src/fonts/Inter/Inter-Regular.woff2"
+  },
+  "src/fonts/Inter/Inter-SemiBold.woff": {
+    "file": "assets/Inter-SemiBold-DGXNtFwE.woff",
+    "src": "src/fonts/Inter/Inter-SemiBold.woff"
+  },
+  "src/fonts/Inter/Inter-SemiBold.woff2": {
+    "file": "assets/Inter-SemiBold-ClSOndc6.woff2",
+    "src": "src/fonts/Inter/Inter-SemiBold.woff2"
+  },
+  "src/fonts/Montserrat/Montserrat-Black.woff": {
+    "file": "assets/Montserrat-Black-BmTiIVkk.woff",
+    "src": "src/fonts/Montserrat/Montserrat-Black.woff"
+  },
+  "src/fonts/Montserrat/Montserrat-Black.woff2": {
+    "file": "assets/Montserrat-Black-DHV45Rcq.woff2",
+    "src": "src/fonts/Montserrat/Montserrat-Black.woff2"
+  },
+  "src/fonts/Montserrat/Montserrat-Bold.woff": {
+    "file": "assets/Montserrat-Bold-CD1a36A8.woff",
+    "src": "src/fonts/Montserrat/Montserrat-Bold.woff"
+  },
+  "src/fonts/Montserrat/Montserrat-Bold.woff2": {
+    "file": "assets/Montserrat-Bold--KnpE353.woff2",
+    "src": "src/fonts/Montserrat/Montserrat-Bold.woff2"
+  },
+  "src/fonts/Montserrat/Montserrat-ExtraBold.woff": {
+    "file": "assets/Montserrat-ExtraBold-pmuBjEdg.woff",
+    "src": "src/fonts/Montserrat/Montserrat-ExtraBold.woff"
+  },
+  "src/fonts/Montserrat/Montserrat-ExtraBold.woff2": {
+    "file": "assets/Montserrat-ExtraBold-MlFhaaRn.woff2",
+    "src": "src/fonts/Montserrat/Montserrat-ExtraBold.woff2"
+  },
+  "src/fonts/Montserrat/Montserrat-Medium.woff": {
+    "file": "assets/Montserrat-Medium-CC-4-OMP.woff",
+    "src": "src/fonts/Montserrat/Montserrat-Medium.woff"
+  },
+  "src/fonts/Montserrat/Montserrat-Medium.woff2": {
+    "file": "assets/Montserrat-Medium-CLx0-BRT.woff2",
+    "src": "src/fonts/Montserrat/Montserrat-Medium.woff2"
+  },
+  "src/fonts/Montserrat/Montserrat-Regular.woff": {
+    "file": "assets/Montserrat-Regular-CAIlaRU4.woff",
+    "src": "src/fonts/Montserrat/Montserrat-Regular.woff"
+  },
+  "src/fonts/Montserrat/Montserrat-Regular.woff2": {
+    "file": "assets/Montserrat-Regular-CoHeiDok.woff2",
+    "src": "src/fonts/Montserrat/Montserrat-Regular.woff2"
+  },
+  "src/fonts/Montserrat/Montserrat-SemiBold.woff": {
+    "file": "assets/Montserrat-SemiBold-CnFJL0Ku.woff",
+    "src": "src/fonts/Montserrat/Montserrat-SemiBold.woff"
+  },
+  "src/fonts/Montserrat/Montserrat-SemiBold.woff2": {
+    "file": "assets/Montserrat-SemiBold-DrfbmBBD.woff2",
+    "src": "src/fonts/Montserrat/Montserrat-SemiBold.woff2"
+  },
   "src/js/main.js": {
-    "file": "assets/main-BG95DOBV.js",
+    "file": "assets/main-BLELXDXJ.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-BYP1kU6P.css"
+      "assets/main-YQRaUKCA.css"
+    ],
+    "assets": [
+      "assets/Inter-Regular-6EfshmZx.woff2",
+      "assets/Inter-Regular-C05ryuRh.woff",
+      "assets/Inter-Medium-D5YUpoRx.woff2",
+      "assets/Inter-Medium-NQOIbdhU.woff",
+      "assets/Inter-SemiBold-ClSOndc6.woff2",
+      "assets/Inter-SemiBold-DGXNtFwE.woff",
+      "assets/Inter-Bold-CQHYVgG_.woff2",
+      "assets/Inter-Bold-Dm1wsqGD.woff",
+      "assets/Inter-Black-PCIGMC9y.woff2",
+      "assets/Inter-Black-C8uLBNKl.woff",
+      "assets/Montserrat-Regular-CoHeiDok.woff2",
+      "assets/Montserrat-Regular-CAIlaRU4.woff",
+      "assets/Montserrat-Medium-CLx0-BRT.woff2",
+      "assets/Montserrat-Medium-CC-4-OMP.woff",
+      "assets/Montserrat-SemiBold-DrfbmBBD.woff2",
+      "assets/Montserrat-SemiBold-CnFJL0Ku.woff",
+      "assets/Montserrat-Bold--KnpE353.woff2",
+      "assets/Montserrat-Bold-CD1a36A8.woff",
+      "assets/Montserrat-ExtraBold-MlFhaaRn.woff2",
+      "assets/Montserrat-ExtraBold-pmuBjEdg.woff",
+      "assets/Montserrat-Black-DHV45Rcq.woff2",
+      "assets/Montserrat-Black-BmTiIVkk.woff"
     ]
   }
 }

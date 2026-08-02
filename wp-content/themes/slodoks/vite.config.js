@@ -32,6 +32,11 @@ const hotFile = () => ({
 
 export default defineConfig(({ command }) => ({
 	plugins: [tailwindcss(), hotFile()],
+	resolve: {
+		alias: {
+			'@': resolve(import.meta.dirname, 'src'),
+		},
+	},
 	// On build, asset URLs inside CSS must resolve from the site root.
 	// The dev server serves from its own root, so no prefix there.
 	base: command === 'build' ? `/wp-content/themes/${THEME_SLUG}/dist/` : '/',
