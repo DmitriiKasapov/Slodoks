@@ -1,6 +1,11 @@
-# Claude Code service files
+# Claude Code service files — never versioned, at any nesting level
 CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
 .claude/
+.claude.json
+.claude.json.backup
+.mcp.json
 .vscode/
 
 # WordPress: only our own code is tracked.
