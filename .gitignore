@@ -1,0 +1,38 @@
+# Claude Code service files
+CLAUDE.md
+.claude/
+.vscode/
+
+# WordPress: only our own code is tracked.
+# Core lives inside the container and never touches the host.
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/languages/
+wp-content/debug.log
+wp-content/*.log
+wp-content/index.php
+
+# Third-party plugins are installed via wp-admin, not versioned
+wp-content/plugins/*
+
+# Bundled/default themes — keep only our custom one
+wp-content/themes/*
+!wp-content/themes/slodoks/
+
+# Dependencies and build artifacts
+node_modules/
+vendor/
+*.map
+
+# Environment and local overrides
+.env
+.env.*
+docker-compose.override.yml
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+
+# Leftover embedded repo from the old Elementor training project
+wp-content/themes/slodoks/plugins/

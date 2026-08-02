@@ -1,0 +1,42 @@
+name: slodoks
+
+services:
+  slodoks_db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: slodoks
+      MYSQL_USER: slodoks_user
+      MYSQL_PASSWORD: slodoks_pass
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - slodoks_db_data:/var/lib/mysql
+
+  slodoks_wp:
+    image: wordpress:latest
+    restart: always
+    ports:
+      - "8002:80"
+    environment:
+      WORDPRESS_DB_HOST: slodoks_db
+      WORDPRESS_DB_NAME: slodoks
+      WORDPRESS_DB_USER: slodoks_user
+      WORDPRESS_DB_PASSWORD: slodoks_pass
+      # WP_DEBUG itself is defined earlier in wp-config.php from this var,
+      # so it must stay set. The remaining constants are added via
+      # WORDPRESS_CONFIG_EXTRA (eval'd afterwards).
+      WORDPRESS_DEBUG: 1
+      # Errors are shown on the page AND written to wp-content/debug.log
+      # (mounted to host).
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'WP_DEBUG_LOG', true );
+        define( 'WP_DEBUG_DISPLAY', true );
+        @ini_set( 'display_errors', '1' );
+        define( 'SCRIPT_DEBUG', true );
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+    depends_on:
+      - slodoks_db
+
+volumes:
+  slodoks_db_data:
