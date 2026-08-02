@@ -29,6 +29,14 @@
 
 [2026-08-02] [тема] Assets зачищены до скелета: удалены все вендорные файлы шаблона Consal (bootstrap, jquery 3.3.1, owl carousel, aos, magnific-popup, jquery-ui, datepicker, waypoints, sticky, animateNumber, шрифты icomoon и flaticon, демо-изображения) и style-rtl.css. Тема с 7.9 МБ до 1.6 МБ. Осталась структура assets/css/style.css (только a11y-хелперы .screen-reader-text и .skip-link), assets/js/main.js (пустая заготовка), assets/images/. header.php и footer.php переписаны на минимальную семантичную разметку: skip-link, поддержка кастомного логотипа, меню выводятся только если назначены, копирайт через wp_date(). Убрана разметка Colorlib с хардкодом соцсетей и «Follow Us». enqueue.php: два хендла с версией по filemtime (кэш сбрасывается при правках), убран перехват хендла jquery — используется ядровый. package.json заменён с underscores-болванки (node-sass, rtlcss, sass/) на минимальный конфиг под новые пути. Проверено: php -l чист, все шаблоны отдают 200/404 корректно, debug.log пуст — выполнено
 
+[2026-08-02] [сборка] Vite 6 + Tailwind v4 подключены. Исходники в src/ (css/main.css как входная точка Tailwind, js/main.js), сборка в dist/ — dist коммитится, так как на хостинге нет Node. inc/enqueue.php резолвит ассеты через манифест Vite, в dev-режиме грузит с dev-сервера по маркеру .vite-hot. Elementor и Redux исключены из стека: конструкторы раздувают разметку и бьют по Core Web Vitals при миграции, Tailwind не сканирует генерируемые Elementor классы; настройки сайта будут через нативный кастомайзер. Удалены inc/options-panel.php и плагин redux-framework.
+  Проблемы, найденные и исправленные при проверке:
+  (1) забытый require options-panel.php в functions.php давал фатал на всех страницах;
+  (2) base в vite.config применялся и в dev-режиме — dev-сервер отдавал 404 на /@vite/client, base сделан зависимым от command;
+  (3) маркер hot лежал в dist/, который очищается при build — сборка при живом dev-сервере молча ломала dev-режим, маркер перенесён в корень темы как .vite-hot;
+  (4) type="module" вместе со стратегией defer — избыточно, модули отложены по умолчанию.
+  Защита от устаревшего маркера: тема доверяет .vite-hot только при WP_ENVIRONMENT_TYPE local/development, в docker-compose добавлена переменная. Проверено реально: сканирование Tailwind из PHP-шаблонов (включая брейкпойнты), оба режима сборки, переключение между ними, php -l, все шаблоны, debug.log пуст — выполнено
+
 [2026-08-02] [документация] CLAUDE.md темы дополнен: структура файлов, критерий «переживёт ли смену темы» для выбора между mu-plugin и inc/, правило префикса slodoks_ — выполнено
 
 [2026-08-02] [тема] Тема slodoks активна (template и stylesheet в wp_options = slodoks), активация выполнена при установке WordPress — выполнено
