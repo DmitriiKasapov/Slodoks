@@ -117,7 +117,7 @@
       обвала трафика после миграции
 - [ ] Проверить `robots.txt`
 - [ ] Прокликать URL из выгрузки: 200 либо корректный 301
-- [ ] Отправить `sitemap_index.xml` в Google Search Console
+- [ ] Отправить `/sitemap.xml` в Google Search Console
 - [ ] Проверить SSL и редиректы (www → без www, http → https)
 
 ---
