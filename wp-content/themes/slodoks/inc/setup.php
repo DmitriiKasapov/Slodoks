@@ -22,8 +22,10 @@ function slodoks_setup(): void {
 
 	register_nav_menus(
 		[
-			'header-menu' => esc_html__( 'Header Menu', 'slodoks' ),
-			'footer-menu' => esc_html__( 'Footer Menu', 'slodoks' ),
+			// Slug stays 'header-menu': changing it would drop the menu
+			// already assigned to this location in wp-admin. The footer shows
+			// the same menu, cut to one level.
+			'header-menu' => esc_html__( 'Primary', 'slodoks' ),
 		]
 	);
 

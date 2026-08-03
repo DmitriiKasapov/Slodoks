@@ -1,38 +1,55 @@
 @layer base {
-	body {
-		@apply font-inter text-body;
+	/*
+	 * Everything shared by headings lives here once. Each level below only
+	 * declares what actually differs — size, leading, weight.
+	 */
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6 {
+		@apply font-montserrat text-ink font-bold;
 	}
 
 	h1,
 	.h1 {
-		@apply font-montserrat text-ink font-bold leading-tight;
+		@apply leading-tight;
+
 		font-size: clamp(2rem, 1.2rem + 4vw, 4.6875rem); /* 32px → 75px */
 	}
 
 	h2,
 	.h2 {
-		@apply font-montserrat text-ink font-bold leading-tight;
+		@apply leading-tight;
+
 		font-size: clamp(1.75rem, 1.2rem + 2vw, 2.75rem); /* 28px → 44px */
 	}
 
 	h3,
 	.h3 {
-		@apply font-montserrat text-ink text-2xl font-bold leading-snug;
+		@apply text-2xl leading-snug;
 	}
 
 	h4,
 	.h4 {
-		@apply font-montserrat text-ink text-xl font-bold leading-snug;
+		@apply text-xl leading-snug;
 	}
 
 	h5,
 	.h5 {
-		@apply font-montserrat text-ink text-lg font-semibold leading-normal;
+		@apply text-lg font-semibold leading-normal;
 	}
 
 	h6,
 	.h6 {
-		@apply font-montserrat text-ink text-base font-semibold leading-normal;
+		@apply text-base font-semibold leading-normal;
 	}
 
 	b,

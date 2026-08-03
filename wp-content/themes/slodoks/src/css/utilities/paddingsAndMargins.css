@@ -1,0 +1,46 @@
+/*
+ * Vertical rhythm between page sections.
+ *
+ * One class on the section instead of a pile of py-* utilities, so the
+ * spacing stays identical everywhere and is changed in a single place.
+ *
+ *   <section class="container-grid section">…</section>
+ */
+
+@utility section {
+	padding-block: 30px;
+
+	@media (width >= theme(--breakpoint-md)) {
+		padding-block: 60px;
+	}
+
+	@media (width >= theme(--breakpoint-lg)) {
+		padding-block: 100px;
+	}
+}
+
+/* Same steps, top edge only. */
+@utility section-top {
+	padding-block-start: 30px;
+
+	@media (width >= theme(--breakpoint-md)) {
+		padding-block-start: 60px;
+	}
+
+	@media (width >= theme(--breakpoint-lg)) {
+		padding-block-start: 100px;
+	}
+}
+
+/* Same steps, bottom edge only. */
+@utility section-bottom {
+	padding-block-end: 30px;
+
+	@media (width >= theme(--breakpoint-md)) {
+		padding-block-end: 60px;
+	}
+
+	@media (width >= theme(--breakpoint-lg)) {
+		padding-block-end: 100px;
+	}
+}

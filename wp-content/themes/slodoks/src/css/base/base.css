@@ -3,6 +3,33 @@
 		scroll-behavior: smooth;
 	}
 
+	body {
+		@apply font-dmsans bg-surface text-body antialiased;
+
+		font-size: 1rem; /* 16px */
+		font-weight: 400;
+		font-style: normal;
+		line-height: 1.3;
+		letter-spacing: 0;
+	}
+
+	/*
+	 * Page shell: header at the top, footer at the bottom, content filling
+	 * whatever is left. Without this the footer floats up the screen on short
+	 * pages like 404 or an empty search result.
+	 */
+	.site {
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		/* dvh accounts for the collapsing browser bar on mobile. */
+		min-height: 100dvh;
+	}
+
+	.site-main {
+		flex: 1 0 auto;
+	}
+
 	/* Keep anchor targets clear of the fixed header. */
 	:target {
 		scroll-margin-top: var(--header-height);

@@ -1,4 +1,28 @@
 {
+  "src/fonts/DMSans/DMSans-Bold.woff": {
+    "file": "assets/DMSans-Bold-BRmCsVSs.woff",
+    "src": "src/fonts/DMSans/DMSans-Bold.woff"
+  },
+  "src/fonts/DMSans/DMSans-Bold.woff2": {
+    "file": "assets/DMSans-Bold-CN2Q1r-A.woff2",
+    "src": "src/fonts/DMSans/DMSans-Bold.woff2"
+  },
+  "src/fonts/DMSans/DMSans-Medium.woff": {
+    "file": "assets/DMSans-Medium-CWvQNijs.woff",
+    "src": "src/fonts/DMSans/DMSans-Medium.woff"
+  },
+  "src/fonts/DMSans/DMSans-Medium.woff2": {
+    "file": "assets/DMSans-Medium-IXAuPIy9.woff2",
+    "src": "src/fonts/DMSans/DMSans-Medium.woff2"
+  },
+  "src/fonts/DMSans/DMSans-Regular.woff": {
+    "file": "assets/DMSans-Regular-BKoQk475.woff",
+    "src": "src/fonts/DMSans/DMSans-Regular.woff"
+  },
+  "src/fonts/DMSans/DMSans-Regular.woff2": {
+    "file": "assets/DMSans-Regular-CCN0SmMn.woff2",
+    "src": "src/fonts/DMSans/DMSans-Regular.woff2"
+  },
   "src/fonts/Inter/Inter-Black.woff": {
     "file": "assets/Inter-Black-C8uLBNKl.woff",
     "src": "src/fonts/Inter/Inter-Black.woff"
@@ -88,14 +112,20 @@
     "src": "src/fonts/Montserrat/Montserrat-SemiBold.woff2"
   },
   "src/js/main.js": {
-    "file": "assets/main-CDeuTzkk.js",
+    "file": "assets/main-CFEPjUD_.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-BOwsEn9T.css"
+      "assets/main-B40OMUUD.css"
     ],
     "assets": [
+      "assets/DMSans-Regular-CCN0SmMn.woff2",
+      "assets/DMSans-Regular-BKoQk475.woff",
+      "assets/DMSans-Medium-IXAuPIy9.woff2",
+      "assets/DMSans-Medium-CWvQNijs.woff",
+      "assets/DMSans-Bold-CN2Q1r-A.woff2",
+      "assets/DMSans-Bold-BRmCsVSs.woff",
       "assets/Inter-Regular-6EfshmZx.woff2",
       "assets/Inter-Regular-C05ryuRh.woff",
       "assets/Inter-Medium-D5YUpoRx.woff2",

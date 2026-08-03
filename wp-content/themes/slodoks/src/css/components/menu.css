@@ -1,0 +1,268 @@
+@layer components {
+	/*
+	 * Site header and main navigation.
+	 *
+	 * One menu markup for both breakpoints: on wide screens it is a row with
+	 * hover dropdowns, below the lg breakpoint it becomes a panel sliding down
+	 * from the header. The panel stays in the DOM and is hidden with
+	 * visibility, so the browser keeps it out of the tab order without any
+	 * script.
+	 */
+	.site-header {
+		@apply sticky top-0 z-50 bg-surface;
+
+		transition:
+			box-shadow 0.3s ease,
+			background-color 0.3s ease;
+	}
+
+	/* Shadow appears only once the page is scrolled — see src/js/header.js. */
+	.site-header.is-stuck {
+		@apply shadow-md;
+	}
+
+	/* --- Logo ------------------------------------------------------------ */
+
+	.site-title {
+		@apply m-0;
+	}
+
+	.site-logo {
+		@apply inline-flex items-center gap-2.5 no-underline;
+	}
+
+	/* Square mark with the initials, in the accent blue. */
+	.site-logo__mark {
+		@apply flex h-9 w-9 shrink-0 items-center justify-center;
+		@apply bg-brand-500 text-surface font-montserrat text-sm font-bold;
+
+		border-radius: 5px;
+	}
+
+	.site-logo__text {
+		@apply font-montserrat text-xl font-bold text-brand-900 leading-none;
+
+		transition: color 0.25s ease;
+	}
+
+	.site-logo:hover .site-logo__text {
+		@apply text-brand-500;
+	}
+
+	.custom-logo-link img {
+		@apply block h-10 w-auto;
+	}
+
+	/* --- Navigation ------------------------------------------------------ */
+
+	.main-nav {
+		@apply flex items-center gap-8;
+	}
+
+	.main-nav__list {
+		@apply flex items-center gap-7 m-0 p-0 list-none;
+	}
+
+	.main-nav__list a {
+		@apply relative block py-2 font-medium text-brand-900 no-underline;
+
+		transition: color 0.25s ease;
+	}
+
+	.main-nav__list a:hover {
+		@apply text-brand-500;
+	}
+
+	/* Underline grows from the left, matching the link style elsewhere. */
+	.main-nav__list > li > a::after {
+		content: "";
+		@apply absolute left-0 bottom-0 h-0.5 w-0 bg-brand-500;
+
+		transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.main-nav__list > li > a:hover::after {
+		@apply w-full;
+	}
+
+	/*
+	 * Current page: blue text like on hover, but the underline is red and
+	 * always there. Declared after the hover rules so it wins on equal
+	 * specificity and the red stays put while the pointer is over it.
+	 */
+	.main-nav__list > li.current-menu-item > a,
+	.main-nav__list > li.current-menu-ancestor > a {
+		@apply text-brand-500;
+	}
+
+	.main-nav__list > li.current-menu-item > a::after,
+	.main-nav__list > li.current-menu-ancestor > a::after {
+		@apply w-full bg-cta;
+	}
+
+	/* --- Dropdowns ------------------------------------------------------- */
+
+	.main-nav__list li {
+		@apply relative;
+	}
+
+	.main-nav__list .sub-menu {
+		@apply absolute left-0 top-full z-10 min-w-56 m-0 py-2 list-none;
+		@apply bg-surface shadow-lg opacity-0 invisible;
+
+		border-radius: 5px;
+		transform: translateY(6px);
+		transition:
+			opacity 0.25s ease,
+			transform 0.25s ease,
+			visibility 0.25s;
+	}
+
+	/* focus-within keeps dropdowns reachable with the keyboard. */
+	.main-nav__list li:hover > .sub-menu,
+	.main-nav__list li:focus-within > .sub-menu {
+		@apply opacity-100 visible;
+
+		transform: translateY(0);
+	}
+
+	.main-nav__list .sub-menu a {
+		@apply px-5 py-2 text-body;
+	}
+
+	.main-nav__list .sub-menu a:hover {
+		@apply bg-brand-50 text-brand-900;
+	}
+
+	/* --- Burger ---------------------------------------------------------- */
+
+	.nav-toggle {
+		@apply hidden items-center justify-center p-2 -mr-2 cursor-pointer;
+	}
+
+	.nav-toggle__box {
+		@apply relative block h-4 w-6;
+	}
+
+	.nav-toggle__bar,
+	.nav-toggle__bar::before,
+	.nav-toggle__bar::after {
+		@apply absolute left-0 block h-0.5 w-full bg-brand-900;
+
+		transition:
+			transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+			opacity 0.2s ease;
+	}
+
+	.nav-toggle__bar {
+		@apply top-1/2 -translate-y-1/2;
+	}
+
+	.nav-toggle__bar::before {
+		content: "";
+		transform: translateY(-7px);
+	}
+
+	.nav-toggle__bar::after {
+		content: "";
+		transform: translateY(7px);
+	}
+
+	/* Burger turns into a cross while the panel is open. */
+	[aria-expanded="true"] .nav-toggle__bar {
+		@apply bg-transparent;
+	}
+
+	[aria-expanded="true"] .nav-toggle__bar::before {
+		transform: translateY(0) rotate(45deg);
+	}
+
+	[aria-expanded="true"] .nav-toggle__bar::after {
+		transform: translateY(0) rotate(-45deg);
+	}
+
+	/* --- Below the lg breakpoint ----------------------------------------- */
+
+	@media (width < theme(--breakpoint-lg)) {
+		.nav-toggle {
+			@apply flex;
+		}
+
+		.main-nav {
+			@apply absolute left-0 right-0 top-full flex-col items-stretch gap-0;
+			@apply bg-surface shadow-lg px-5 py-4 opacity-0 invisible;
+
+			transform: translateY(-8px);
+			transition:
+				opacity 0.25s ease,
+				transform 0.25s ease,
+				visibility 0.25s;
+		}
+
+		.site-header.is-open .main-nav {
+			@apply opacity-100 visible;
+
+			transform: translateY(0);
+		}
+
+		.main-nav__list {
+			@apply flex-col items-stretch gap-0;
+		}
+
+		.main-nav__list > li > a {
+			@apply py-3 pl-3 border-b border-line;
+		}
+
+		/*
+		 * The underline turns into a bar on the left: a full-width line under
+		 * every item would merge with the row separators.
+		 */
+		.main-nav__list > li > a::after {
+			@apply left-0 top-0 bottom-auto h-full w-0.5;
+
+			transition: opacity 0.25s ease;
+			opacity: 0;
+		}
+
+		/* Width has to be restated: the desktop hover rule carries higher
+		   specificity and would stretch the bar across the whole item. */
+		.main-nav__list > li > a:hover::after {
+			@apply w-0.5;
+
+			opacity: 1;
+		}
+
+		.main-nav__list > li.current-menu-item > a::after,
+		.main-nav__list > li.current-menu-ancestor > a::after {
+			@apply w-0.5 bg-cta;
+
+			opacity: 1;
+		}
+
+		/* Submenus are simply expanded: no second tap to reach a child page. */
+		.main-nav__list .sub-menu {
+			@apply static visible opacity-100 min-w-0 py-0 pl-4 shadow-none;
+
+			transform: none;
+		}
+
+		.main-nav__list .sub-menu a {
+			@apply px-0 py-2;
+		}
+
+		.main-nav__cta {
+			@apply mt-4 w-full;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.site-header,
+		.main-nav,
+		.main-nav__list .sub-menu,
+		.nav-toggle__bar,
+		.nav-toggle__bar::before,
+		.nav-toggle__bar::after {
+			transition-duration: 0.01ms;
+		}
+	}
+}

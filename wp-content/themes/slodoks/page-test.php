@@ -59,7 +59,7 @@ get_header();
 
 			<p class="mt-4 max-w-prose">
 				Принятые решения: радиус кнопок 5px, наведение — градиент со
-				сдвигом, заголовки Montserrat, текст Inter, у ссылок линия
+				сдвигом, заголовки Montserrat, текст DM Sans, у ссылок линия
 				выезжает слева.
 			</p>
 
@@ -180,7 +180,7 @@ get_header();
 		<div class="content">
 			<h2>Типографика</h2>
 
-			<p class="mt-2 text-muted text-sm">Заголовки Montserrat, текст Inter.</p>
+			<p class="mt-2 text-muted text-sm">Заголовки Montserrat, текст DM Sans.</p>
 
 			<p class="h1 mt-6">Помогу с переездом в Словению по учёбе</p>
 
@@ -206,7 +206,7 @@ get_header();
 			<h2>Пара кнопок в баннере</h2>
 
 			<div class="mt-6 bg-brand-900 rounded-xl p-10">
-				<p class="text-surface text-2xl font-montserrat font-bold max-w-2xl">
+				<p class="h3 text-surface max-w-2xl">
 					Помогу с переездом в Словению по учёбе
 				</p>
 

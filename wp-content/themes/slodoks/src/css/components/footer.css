@@ -1,0 +1,80 @@
+@layer components {
+	/*
+	 * Site footer.
+	 *
+	 * Dark block in the brand blue: the page ends with a clear edge and the
+	 * red button keeps its weight against it. Only what differs from the base
+	 * styles is declared here — text colour and layout, never the font.
+	 */
+	.site-footer {
+		@apply bg-brand-900 text-surface mt-20;
+	}
+
+	/*
+	 * Four columns: brand, menu, services, call to action. Everything but the
+	 * copyright line lives here. Inside the brand column the logo comes
+	 * first, the SEO text and social links follow underneath.
+	 */
+	.site-footer__top {
+		@apply grid gap-y-10 gap-x-16 py-14 md:grid-cols-2 lg:grid-cols-4;
+	}
+
+	.site-footer__heading {
+		@apply text-2xl text-surface mb-4;
+	}
+
+	.site-footer__text {
+		@apply mt-4 max-w-sm text-sm;
+
+		color: rgb(255 255 255 / 0.75);
+	}
+
+	.site-footer__list {
+		@apply m-0 p-0 list-none;
+	}
+
+	.site-footer__list li + li {
+		@apply mt-2;
+	}
+
+	/*
+	 * Links go light — the brand blue would be unreadable here — and get the
+	 * same underline that slides in from the left as everywhere else.
+	 */
+	.site-footer a:not(.btn) {
+		@apply text-surface no-underline;
+
+		-webkit-box-decoration-break: clone;
+		box-decoration-break: clone;
+		background-image: linear-gradient(currentColor, currentColor);
+		background-repeat: no-repeat;
+		background-position: 0 100%;
+		background-size: 0 1px;
+		padding-bottom: 2px;
+		transition: background-size 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.site-footer a:not(.btn):hover {
+		background-size: 100% 1px;
+	}
+
+	/* The mark keeps its accent blue; only the wordmark goes light. */
+	.site-footer .site-logo__text {
+		@apply text-surface;
+	}
+
+
+	.site-footer__bottom {
+		border-top: 1px solid rgb(255 255 255 / 0.15);
+	}
+
+	.site-footer__bottom-inner {
+		@apply flex flex-wrap items-center justify-between gap-4 py-6 text-sm;
+
+		color: rgb(255 255 255 / 0.7);
+	}
+
+	.site-footer__bottom-inner p {
+		@apply m-0;
+	}
+}
