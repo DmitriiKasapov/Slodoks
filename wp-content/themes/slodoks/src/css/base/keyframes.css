@@ -1,1 +1,20 @@
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes */
+
+/*
+ * Hero slide zoom.
+ *
+ * Deliberately longer than a slide is ever shown, so it never reaches the end
+ * and freezes. The way back is not a keyframe: when the slide stops being
+ * active the rule no longer applies and the scale resets instantly, under the
+ * crossfade. That keeps the reset tied to the actual slide change instead of
+ * a duration guessed from Swiper's timers.
+ */
+@keyframes hero-zoom {
+	from {
+		transform: scale(1);
+	}
+
+	to {
+		transform: scale(1.05);
+	}
+}

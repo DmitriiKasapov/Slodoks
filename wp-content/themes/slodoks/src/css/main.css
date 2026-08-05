@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/*
+ * Vendor styles go into the base layer on purpose. Imported from JS they land
+ * outside every layer, and unlayered rules win over layered ones whatever the
+ * order — Swiper would then override our own component styles.
+ */
+@import "swiper/css" layer(base);
+@import "swiper/css/effect-fade" layer(base);
+@import "swiper/css/pagination" layer(base);
+
 @import "./base/theme.css";
 @import "./base/root.css";
 @import "./base/fonts.css";
@@ -19,4 +28,5 @@
 @import "./components/links.css";
 @import "./components/menu.css";
 @import "./components/footer.css";
+@import "./components/hero-slider.css";
 @import "./components/components.css";

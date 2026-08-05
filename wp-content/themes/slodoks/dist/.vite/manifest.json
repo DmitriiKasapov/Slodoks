@@ -112,12 +112,12 @@
     "src": "src/fonts/Montserrat/Montserrat-SemiBold.woff2"
   },
   "src/js/main.js": {
-    "file": "assets/main-CFEPjUD_.js",
+    "file": "assets/main-BfgSQzZW.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-B40OMUUD.css"
+      "assets/main-D1Fhl8mj.css"
     ],
     "assets": [
       "assets/DMSans-Regular-CCN0SmMn.woff2",

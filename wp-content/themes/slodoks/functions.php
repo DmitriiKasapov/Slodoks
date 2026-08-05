@@ -21,6 +21,7 @@ define( 'SLODOKS_VERSION', wp_get_theme()->get( 'Version' ) );
 $slodoks_modules = [
 	'setup',         // Theme supports, menus, widget areas.
 	'enqueue',       // Front-end styles and scripts.
+	'post-types',    // Custom post types and their admin listing.
 	'template-tags', // Helpers used inside templates.
 ];
 

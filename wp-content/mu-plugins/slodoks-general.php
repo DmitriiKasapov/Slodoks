@@ -70,6 +70,54 @@ add_filter(
 );
 
 /**
+ * Save generated image sizes as WebP.
+ *
+ * WordPress does not convert uploads on its own: the idea was tried in 6.1
+ * and rolled back because keeping both formats doubled the disk usage. This
+ * filter converts the generated sizes only — the uploaded original stays as
+ * it is and serves as the fallback inside <picture> for the handful of
+ * browsers that cannot read WebP.
+ *
+ * The filter carries a map of source mime => target mime, not a single
+ * format, and core already fills it with the HEIC rules, so the array is
+ * extended rather than replaced.
+ *
+ * PNG is left alone: it is used for logos and transparent graphics where the
+ * lossless original is usually smaller than a WebP copy.
+ *
+ * @param array $formats Mime type mapping.
+ * @return array
+ */
+add_filter(
+	'image_editor_output_format',
+	static function ( array $formats ): array {
+		$formats['image/jpeg'] = 'image/webp';
+		$formats['image/jpg']  = 'image/webp';
+
+		return $formats;
+	}
+);
+
+/**
+ * Quality for generated WebP files.
+ *
+ * 82 matches the WordPress default for JPEG and is visually indistinguishable
+ * from the original at a fraction of the weight.
+ *
+ * @param int    $quality Current quality.
+ * @param string $mime    Mime type being written.
+ * @return int
+ */
+add_filter(
+	'wp_editor_set_quality',
+	static function ( int $quality, string $mime ): int {
+		return 'image/webp' === $mime ? 82 : $quality;
+	},
+	10,
+	2
+);
+
+/**
  * Make SVG thumbnails visible in the media library.
  *
  * Without an intrinsic size WordPress renders them as zero-height boxes.
