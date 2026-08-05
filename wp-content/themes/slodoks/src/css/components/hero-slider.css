@@ -13,22 +13,33 @@
 	.hero__slide {
 		@apply relative flex items-stretch overflow-hidden;
 
-		min-height: 30rem;
+		min-height: 34rem;
 	}
 
+	/*
+	 * Nearly a full screen, but capped: svh keeps the slide clear of the
+	 * mobile address bar, and the ceiling stops the text drowning in empty
+	 * space on tall monitors.
+	 */
 	@media (width >= theme(--breakpoint-lg)) {
 		.hero__slide {
-			min-height: 40rem;
+			min-height: min(46rem, 88svh);
 		}
 	}
 
+	/* Dark base under the picture: while it loads, and behind the parts of a
+	   slide the picture cannot cover, the light text stays readable. */
 	.hero__media {
-		@apply absolute inset-0;
+		@apply absolute inset-0 bg-brand-900;
 	}
 
+	/* `block` is what makes the height work at all: <picture> is inline by
+	   default, an inline box ignores height, and the img inside would then
+	   resolve its own 100% against an auto height and fall back to the
+	   picture's natural size. */
 	.hero__media picture,
 	.hero__image {
-		@apply h-full w-full object-cover;
+		@apply block h-full w-full object-cover;
 	}
 
 	/*
@@ -90,13 +101,21 @@
 	}
 
 	/*
-	 * Bottom padding clears the arrows and bullets, top padding matches it, so
-	 * the text stays optically centred rather than sitting under the controls.
+	 * Bottom padding clears the arrows and bullets. On narrow screens the top
+	 * needs far less: the controls only sit at the bottom, and matching them
+	 * above just eats the little height there is.
 	 */
 	.hero__content {
 		@apply max-w-2xl text-surface;
 
-		padding-block: 7rem;
+		padding-block: 4rem 7rem;
+	}
+
+	/* Wide screens have the room, so the block is optically centred instead. */
+	@media (width >= theme(--breakpoint-lg)) {
+		.hero__content {
+			padding-block: 7rem;
+		}
 	}
 
 	.hero__title {
