@@ -19,14 +19,7 @@ defined( 'ABSPATH' ) || exit;
 			<div class="content site-footer__top">
 
 				<div class="site-footer__col site-footer__col--brand">
-					<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<?php if ( has_custom_logo() ) : ?>
-							<?php the_custom_logo(); ?>
-						<?php else : ?>
-							<span class="site-logo__mark" aria-hidden="true">SD</span>
-							<span class="site-logo__text"><?php bloginfo( 'name' ); ?></span>
-						<?php endif; ?>
-					</a>
+					<?php slodoks_element( 'site-logo' ); ?>
 
 					<?php // SEO text goes here. ?>
 

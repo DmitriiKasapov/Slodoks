@@ -39,9 +39,10 @@
 
 	/*
 	 * Links go light — the brand blue would be unreadable here — and get the
-	 * same underline that slides in from the left as everywhere else.
+	 * same underline that slides in from the left as everywhere else. The logo
+	 * is a picture, not a text link, so it stays out of this.
 	 */
-	.site-footer a:not(.btn) {
+	.site-footer a:not(.btn, .site-logo) {
 		@apply text-surface no-underline;
 
 		-webkit-box-decoration-break: clone;
@@ -54,7 +55,7 @@
 		transition: background-size 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 	}
 
-	.site-footer a:not(.btn):hover {
+	.site-footer a:not(.btn, .site-logo):hover {
 		background-size: 100% 1px;
 	}
 

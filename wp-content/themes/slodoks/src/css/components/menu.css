@@ -23,10 +23,6 @@
 
 	/* --- Logo ------------------------------------------------------------ */
 
-	.site-title {
-		@apply m-0;
-	}
-
 	.site-logo {
 		@apply inline-flex items-center gap-2.5 no-underline;
 	}
@@ -39,14 +35,10 @@
 		border-radius: 5px;
 	}
 
+	/* No hover state: the logo is a mark, and a colour change on it reads as
+	   a text link rather than as the way back to the front page. */
 	.site-logo__text {
 		@apply font-montserrat text-xl font-bold text-brand-900 leading-none;
-
-		transition: color 0.25s ease;
-	}
-
-	.site-logo:hover .site-logo__text {
-		@apply text-brand-500;
 	}
 
 	.custom-logo-link img {

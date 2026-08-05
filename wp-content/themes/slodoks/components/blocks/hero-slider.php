@@ -38,6 +38,14 @@ if ( ! $slodoks_slides->have_posts() ) {
 				$slodoks_first   = slodoks_get_button( $slodoks_id, 'button_one' );
 				$slodoks_second  = slodoks_get_button( $slodoks_id, 'button_two' );
 				$slodoks_index   = $slodoks_slides->current_post;
+
+				/*
+				 * The first slide carries the h1 of the front page. The logo in
+				 * the header used to hold it, and a logo says nothing about what
+				 * the page is for. The rest of the slides stay h2 — one h1 to a
+				 * page.
+				 */
+				$slodoks_heading = 0 === $slodoks_index ? 'h1' : 'h2';
 				?>
 				<div class="swiper-slide hero__slide">
 					<?php if ( has_post_thumbnail() ) : ?>
@@ -61,7 +69,8 @@ if ( ! $slodoks_slides->have_posts() ) {
 
 					<div class="container-grid hero__inner">
 						<div class="content hero__content">
-							<h2 class="hero__title"><?php the_title(); ?></h2>
+							<?php // The .h2 class keeps every slide the same size, whatever the tag. ?>
+							<<?php echo esc_attr( $slodoks_heading ); ?> class="hero__title h2"><?php the_title(); ?></<?php echo esc_attr( $slodoks_heading ); ?>>
 
 							<?php if ( get_the_content() ) : ?>
 								<div class="hero__text"><?php the_content(); ?></div>

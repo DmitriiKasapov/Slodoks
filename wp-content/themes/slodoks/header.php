@@ -32,22 +32,8 @@ defined( 'ABSPATH' ) || exit;
 		<div class="container-grid site-header__inner">
 			<div class="content flex items-center justify-between gap-6 py-4">
 
-				<?php
-				// The site title carries the h1 only on the front page; inner
-				// pages keep their own heading as the first level.
-				$slodoks_title_tag = ( is_front_page() && is_home() ) ? 'h1' : 'p';
-				?>
 				<div class="site-branding">
-					<<?php echo esc_attr( $slodoks_title_tag ); ?> class="site-title">
-						<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-							<?php if ( has_custom_logo() ) : ?>
-								<?php the_custom_logo(); ?>
-							<?php else : ?>
-								<span class="site-logo__mark" aria-hidden="true">SD</span>
-								<span class="site-logo__text"><?php bloginfo( 'name' ); ?></span>
-							<?php endif; ?>
-						</a>
-					</<?php echo esc_attr( $slodoks_title_tag ); ?>>
+					<?php slodoks_element( 'site-logo' ); ?>
 				</div><!-- .site-branding -->
 
 				<nav
