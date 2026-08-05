@@ -1,9 +1,8 @@
 /*
  * Self-hosted fonts.
  *
- * Inter carries the body text, Montserrat the headings. Both cover Cyrillic
- * and the Slovenian diacritics, unlike the Poppins and DM Sans of the Consal
- * template.
+ * DM Sans carries the body text, Montserrat the headings. Both cover Cyrillic
+ * and the Slovenian diacritics.
  *
  * Only woff2 and woff are wired up. The eot and ttf files stay in the folder
  * but are not referenced: eot targets Internet Explorer, retired in 2022, and
@@ -35,51 +34,6 @@
     url("@/fonts/DMSans/DMSans-Bold.woff") format("woff");
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("@/fonts/Inter/Inter-Regular.woff2") format("woff2"),
-    url("@/fonts/Inter/Inter-Regular.woff") format("woff");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("@/fonts/Inter/Inter-Medium.woff2") format("woff2"),
-    url("@/fonts/Inter/Inter-Medium.woff") format("woff");
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("@/fonts/Inter/Inter-SemiBold.woff2") format("woff2"),
-    url("@/fonts/Inter/Inter-SemiBold.woff") format("woff");
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("@/fonts/Inter/Inter-Bold.woff2") format("woff2"),
-    url("@/fonts/Inter/Inter-Bold.woff") format("woff");
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("@/fonts/Inter/Inter-Black.woff2") format("woff2"),
-    url("@/fonts/Inter/Inter-Black.woff") format("woff");
-  font-style: normal;
-  font-weight: 900;
   font-display: swap;
 }
 

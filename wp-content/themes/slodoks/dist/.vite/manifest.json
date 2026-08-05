@@ -23,46 +23,6 @@
     "file": "assets/DMSans-Regular-CCN0SmMn.woff2",
     "src": "src/fonts/DMSans/DMSans-Regular.woff2"
   },
-  "src/fonts/Inter/Inter-Black.woff": {
-    "file": "assets/Inter-Black-C8uLBNKl.woff",
-    "src": "src/fonts/Inter/Inter-Black.woff"
-  },
-  "src/fonts/Inter/Inter-Black.woff2": {
-    "file": "assets/Inter-Black-PCIGMC9y.woff2",
-    "src": "src/fonts/Inter/Inter-Black.woff2"
-  },
-  "src/fonts/Inter/Inter-Bold.woff": {
-    "file": "assets/Inter-Bold-Dm1wsqGD.woff",
-    "src": "src/fonts/Inter/Inter-Bold.woff"
-  },
-  "src/fonts/Inter/Inter-Bold.woff2": {
-    "file": "assets/Inter-Bold-CQHYVgG_.woff2",
-    "src": "src/fonts/Inter/Inter-Bold.woff2"
-  },
-  "src/fonts/Inter/Inter-Medium.woff": {
-    "file": "assets/Inter-Medium-NQOIbdhU.woff",
-    "src": "src/fonts/Inter/Inter-Medium.woff"
-  },
-  "src/fonts/Inter/Inter-Medium.woff2": {
-    "file": "assets/Inter-Medium-D5YUpoRx.woff2",
-    "src": "src/fonts/Inter/Inter-Medium.woff2"
-  },
-  "src/fonts/Inter/Inter-Regular.woff": {
-    "file": "assets/Inter-Regular-C05ryuRh.woff",
-    "src": "src/fonts/Inter/Inter-Regular.woff"
-  },
-  "src/fonts/Inter/Inter-Regular.woff2": {
-    "file": "assets/Inter-Regular-6EfshmZx.woff2",
-    "src": "src/fonts/Inter/Inter-Regular.woff2"
-  },
-  "src/fonts/Inter/Inter-SemiBold.woff": {
-    "file": "assets/Inter-SemiBold-DGXNtFwE.woff",
-    "src": "src/fonts/Inter/Inter-SemiBold.woff"
-  },
-  "src/fonts/Inter/Inter-SemiBold.woff2": {
-    "file": "assets/Inter-SemiBold-ClSOndc6.woff2",
-    "src": "src/fonts/Inter/Inter-SemiBold.woff2"
-  },
   "src/fonts/Montserrat/Montserrat-Black.woff": {
     "file": "assets/Montserrat-Black-BmTiIVkk.woff",
     "src": "src/fonts/Montserrat/Montserrat-Black.woff"
@@ -112,12 +72,12 @@
     "src": "src/fonts/Montserrat/Montserrat-SemiBold.woff2"
   },
   "src/js/main.js": {
-    "file": "assets/main-BfgSQzZW.js",
+    "file": "assets/main-D50S1jgB.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "assets/main-D1Fhl8mj.css"
+      "assets/main-B6-pEbRM.css"
     ],
     "assets": [
       "assets/DMSans-Regular-CCN0SmMn.woff2",
@@ -126,16 +86,6 @@
       "assets/DMSans-Medium-CWvQNijs.woff",
       "assets/DMSans-Bold-CN2Q1r-A.woff2",
       "assets/DMSans-Bold-BRmCsVSs.woff",
-      "assets/Inter-Regular-6EfshmZx.woff2",
-      "assets/Inter-Regular-C05ryuRh.woff",
-      "assets/Inter-Medium-D5YUpoRx.woff2",
-      "assets/Inter-Medium-NQOIbdhU.woff",
-      "assets/Inter-SemiBold-ClSOndc6.woff2",
-      "assets/Inter-SemiBold-DGXNtFwE.woff",
-      "assets/Inter-Bold-CQHYVgG_.woff2",
-      "assets/Inter-Bold-Dm1wsqGD.woff",
-      "assets/Inter-Black-PCIGMC9y.woff2",
-      "assets/Inter-Black-C8uLBNKl.woff",
       "assets/Montserrat-Regular-CoHeiDok.woff2",
       "assets/Montserrat-Regular-CAIlaRU4.woff",
       "assets/Montserrat-Medium-CLx0-BRT.woff2",

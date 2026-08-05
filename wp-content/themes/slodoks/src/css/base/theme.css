@@ -13,7 +13,6 @@
 	/* Fonts — DM Sans for body text, Montserrat for headings. */
 	--font-dmsans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 	--font-montserrat: "Montserrat", var(--font-dmsans);
-	--font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
 
 	/* Colors — brand blues (Consal) */
 	--color-brand-900: #00294b; /* headings, footer, topbar — 14.8:1 on white */

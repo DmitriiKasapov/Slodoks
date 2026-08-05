@@ -9,7 +9,7 @@
 	 * control.
 	 *
 	 * The line is drawn as a background gradient so its thickness and offset
-	 * do not follow the font metrics and stay identical in Inter and
+	 * do not follow the font metrics and stay identical in DM Sans and
 	 * Montserrat.
 	 */
 	.link {
