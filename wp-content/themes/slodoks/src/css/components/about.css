@@ -1,0 +1,127 @@
+@layer components {
+	/*
+	 * "About me" block.
+	 *
+	 * Portrait on the left, text on the right: the eye lands on the face
+	 * first, then reads. No background of its own — the page is already
+	 * white, and the section spacing does the separating.
+	 */
+	.about__inner {
+		@apply grid gap-8;
+	}
+
+	@media (width >= theme(--breakpoint-md)) {
+		.about__inner {
+			/* The photo takes the smaller share: it supports the text, not the
+			   other way round. */
+			grid-template-columns: 5fr 7fr;
+			@apply gap-12 items-center;
+		}
+	}
+
+	/* --- Photo ------------------------------------------------------------ */
+
+	.about__media {
+		@apply overflow-hidden;
+
+		aspect-ratio: 4 / 5;
+		border-radius: 5px;
+	}
+
+	.about__media img,
+	.about__media picture {
+		@apply block h-full w-full object-cover;
+	}
+
+	/* Stand-in until the portrait is in place. */
+	.about__media--empty {
+		@apply flex flex-col items-center justify-center gap-3 text-muted;
+
+		background: repeating-linear-gradient(
+			45deg,
+			theme(--color-surface),
+			theme(--color-surface) 12px,
+			theme(--color-surface-soft) 12px,
+			theme(--color-surface-soft) 24px
+		);
+	}
+
+	.about__placeholder {
+		@apply h-16 w-16;
+	}
+
+	.about__placeholder-label {
+		@apply text-sm;
+	}
+
+	/* --- Text ------------------------------------------------------------- */
+
+	/*
+	 * Line above the heading. It names the section without spending a heading
+	 * level on it. Blue, not red: red is the colour of the buttons here, and
+	 * spreading it around costs them their pull.
+	 */
+	.about__eyebrow {
+		@apply font-montserrat font-bold text-brand-500;
+	}
+
+	.about__title {
+		@apply mt-3;
+	}
+
+	.about__text {
+		@apply mt-5 max-w-prose;
+	}
+
+	.about__text p + p {
+		@apply mt-4;
+	}
+
+	/* --- Facts ------------------------------------------------------------ */
+
+	.about__facts {
+		@apply mt-6 grid gap-3 p-0;
+
+		list-style: none;
+
+		/* Both halves of the marker are placed against this, so the circle and
+		   the tick inside it stay together if the text size changes. */
+		--about-marker: 1.5rem;
+	}
+
+	.about__facts li {
+		@apply relative text-ink;
+
+		padding-left: calc(var(--about-marker) + 0.75rem);
+	}
+
+	/* Blue disc… */
+	.about__facts li::before {
+		content: "";
+		@apply absolute left-0 top-0.5 block rounded-full bg-brand-500;
+
+		width: var(--about-marker);
+		height: var(--about-marker);
+	}
+
+	/* …with a white tick drawn on it out of two borders: no icon font, no
+	   extra request. */
+	.about__facts li::after {
+		content: "";
+		@apply absolute block h-1.5 w-2.5;
+
+		top: calc(0.125rem + var(--about-marker) / 2 - 0.3rem);
+		left: calc(var(--about-marker) / 2 - 0.3125rem);
+		/* Colour spelled out on each border: the shorthand without one falls
+		   back to currentColor and the tick comes out dark. */
+		border-left: 2px solid theme(--color-surface);
+		border-bottom: 2px solid theme(--color-surface);
+		transform: rotate(-45deg);
+	}
+
+	/* --- Call to action --------------------------------------------------- */
+
+	.about__actions {
+		@apply mt-8 flex flex-wrap items-center gap-x-6 gap-y-4;
+	}
+}

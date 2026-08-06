@@ -8,6 +8,22 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Include the body of a page from pages/.
+ *
+ * Templates in the theme root stay thin: they call get_header(), hand over to
+ * the matching file in pages/ and call get_footer(). The layout itself lives
+ * in that file.
+ *
+ *   slodoks_page( 'home' );
+ *
+ * @param string $name File name without extension.
+ * @param array  $args Data passed to the file as $args.
+ */
+function slodoks_page( string $name, array $args = [] ): void {
+	get_template_part( 'pages/' . $name, null, $args );
+}
+
+/**
  * Include a page section from components/blocks.
  *
  *   slodoks_block( 'hero-slider' );
