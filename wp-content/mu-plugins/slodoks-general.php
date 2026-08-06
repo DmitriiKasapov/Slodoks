@@ -128,3 +128,65 @@ add_action(
 		echo '<style>.media-icon img[src$=".svg"],.attachment img[src$=".svg"]{width:100%;height:auto}</style>';
 	}
 );
+
+/**
+ * Keep the classic editor.
+ *
+ * Page layouts are written by hand in the theme; the editor only holds text
+ * and a handful of custom fields, and the block editor gets in the way of
+ * both. Applies to pages and posts — custom post types declare their own
+ * choice through show_in_rest.
+ */
+add_filter(
+	'use_block_editor_for_post_type',
+	static function ( bool $enabled, string $post_type ): bool {
+		return in_array( $post_type, [ 'page', 'post' ], true ) ? false : $enabled;
+	},
+	10,
+	2
+);
+
+/**
+ * Show the custom fields box, which core hides on a fresh install.
+ *
+ * It is hidden per user through screen options, so this only sets the
+ * default — anyone can still switch it off for themselves.
+ */
+add_filter(
+	'default_hidden_meta_boxes',
+	static function ( array $hidden ): array {
+		return array_values( array_diff( $hidden, [ 'postcustom' ] ) );
+	}
+);
+
+/**
+ * Drop the block library stylesheet from the front end.
+ *
+ * Nothing renders blocks any more, so this is dead weight on every page —
+ * and page weight is what the migration is being judged on.
+ */
+add_action(
+	'wp_enqueue_scripts',
+	static function (): void {
+		wp_dequeue_style( 'wp-block-library' );
+		wp_dequeue_style( 'wp-block-library-theme' );
+		wp_dequeue_style( 'classic-theme-styles' );
+	},
+	100
+);
+
+/**
+ * Drop the global styles core prints inline.
+ *
+ * These cannot be dequeued: core prints them through actions of its own. They
+ * are the presets a theme.json would feed, and this theme has none — its
+ * tokens live in Tailwind.
+ */
+add_action(
+	'init',
+	static function (): void {
+		remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
+		remove_action( 'wp_footer', 'wp_enqueue_global_styles', 1 );
+		remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles_custom_css' );
+	}
+);
